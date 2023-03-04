@@ -21,3 +21,7 @@ a {
 .black {
   color: black !important;
 }
+.activeLink1 {
+  color: rgb(180, 9, 216) !important;
+  font-weight: bold;
+}

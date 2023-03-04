@@ -41,7 +41,9 @@ function Header() {
               <Li>
                 <Icon icon="mdi:cards-heart-outline" width="35" height="35" />
               </Li>
-              <Li>داشبورد</Li>
+              <Li>
+                <NavLink to="/panel/login">داشبورد</NavLink>
+              </Li>
               <Li>
                 <NavLink to="/cart">
                   {" "}
