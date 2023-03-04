@@ -59,10 +59,6 @@ export const routes: RouteObject[] = [
     element: <PanelLayout />,
     children: [
       {
-        path: "Management",
-        element: <ManagementPage />,
-      },
-      {
         path: "order",
         element: <Orders />,
       },

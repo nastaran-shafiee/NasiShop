@@ -15,6 +15,7 @@ module.exports = {
         back: "rgb(226 232 240)",
         gray2: "rgb(91, 91, 91)",
         purple: "rgb(180, 9, 216)",
+        table: "rgb(175, 168, 173)",
       },
     },
   },

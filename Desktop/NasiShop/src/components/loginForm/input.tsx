@@ -5,7 +5,7 @@ import Input from "../input";
 function LoginForm() {
   const navigate = useNavigate();
   function submit1() {
-    navigate("/panel/Management");
+    navigate("/panel/goods");
   }
 
   // return function---------------------------

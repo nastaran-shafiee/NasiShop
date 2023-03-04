@@ -35,3 +35,11 @@ export interface ButtonCartInterface{
     
     position?:string
 }
+export interface childrenInterface{
+    children?: JSX.Element | JSX.Element[];
+}
+export interface thInterface{
+  
+    text?:string
+
+}

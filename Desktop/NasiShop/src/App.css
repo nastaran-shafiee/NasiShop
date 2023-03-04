@@ -25,3 +25,6 @@ a {
   color: rgb(180, 9, 216) !important;
   font-weight: bold;
 }
+tr:nth-child(even) {
+  background-color: rgb(209, 208, 208);
+}
