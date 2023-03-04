@@ -1,7 +1,15 @@
+import MenHeader from "../../../Layout/menHeader";
+
+import Products from "../../../components/products";
+
 function MenPage() {
   return (
     <>
-      <h1>this is a MenPage</h1>
+      <MenHeader />
+      <Products />
+      <Products />
+      <Products />
+      <Products />
     </>
   );
 }

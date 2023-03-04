@@ -3,7 +3,9 @@ import {
   RouterProvider,
   RouteObject,
 } from "react-router-dom";
-import Layout from "../components/layout/layou";
+import SiteLayout from "../rootLayout/siteLayout";
+import PanelLayout from "../rootLayout/panelLayout";
+import Login from "../pages/panel/login";
 import NotFoundPage from "../pages/Site/404page";
 import BascketCart from "../pages/Site/basketCart";
 import CoatPage from "../pages/Site/coatPage";
@@ -25,12 +27,12 @@ import WomenSocksPage from "../pages/Site/womenSocksPage";
 export const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Layout />,
+    element: <SiteLayout />,
     children: [
       { path: "/", element: <WelcomePage /> },
       { path: "Cart", element: <BascketCart /> },
       //women
-      { path: "Women", element: <WomenPage /> },
+      { path: "women", element: <WomenPage /> },
       { path: "women/dress", element: <DressPage /> },
       { path: "women/Accessory", element: <WomenAccessoryPage /> },
       { path: "women/pants", element: <WomenPantsPage /> },
@@ -47,5 +49,15 @@ export const routes: RouteObject[] = [
       { path: "men/coat", element: <CoatPage /> },
     ],
     errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/panel",
+    element: <PanelLayout />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+    ],
   },
 ];

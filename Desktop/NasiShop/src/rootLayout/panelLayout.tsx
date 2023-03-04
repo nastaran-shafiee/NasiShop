@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
-function Layout() {
+
+function PanelLayout() {
   return (
     <>
       <Outlet></Outlet>
     </>
   );
 }
-export default Layout;
+export default PanelLayout;

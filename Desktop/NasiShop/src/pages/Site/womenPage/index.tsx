@@ -1,7 +1,14 @@
+import WomenHeader from "../../../Layout/womenHeader";
+import Products from "../../../components/products";
+
 function WomenPage() {
   return (
     <>
-      <h1>this is a WomenPage</h1>
+      <WomenHeader />
+      <Products />
+      <Products />
+      <Products />
+      <Products />
     </>
   );
 }
