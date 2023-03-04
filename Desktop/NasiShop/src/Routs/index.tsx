@@ -23,6 +23,10 @@ import WomenPantsPage from "../pages/Site/womenPantsPage";
 import WomenShirtPage from "../pages/Site/womenShirtPage";
 import WomenShoePage from "../pages/Site/womenShoePage";
 import WomenSocksPage from "../pages/Site/womenSocksPage";
+import ManagementPage from "../pages/panel/MangementPage";
+import Orders from "../pages/panel/order";
+import InventoryPage from "../pages/panel/InventoryPage";
+import GoodsPage from "../pages/panel/goodsPage";
 // const rout--------------------------------------------
 export const routes: RouteObject[] = [
   {
@@ -55,9 +59,25 @@ export const routes: RouteObject[] = [
     element: <PanelLayout />,
     children: [
       {
-        path: "login",
-        element: <Login />,
+        path: "Management",
+        element: <ManagementPage />,
+      },
+      {
+        path: "order",
+        element: <Orders />,
+      },
+      {
+        path: "investory",
+        element: <InventoryPage />,
+      },
+      {
+        path: "goods",
+        element: <GoodsPage />,
       },
     ],
+  },
+  {
+    path: "panel/login",
+    element: <Login />,
   },
 ];
