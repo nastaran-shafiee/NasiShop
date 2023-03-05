@@ -23,7 +23,6 @@ import WomenPantsPage from "../pages/Site/womenPantsPage";
 import WomenShirtPage from "../pages/Site/womenShirtPage";
 import WomenShoePage from "../pages/Site/womenShoePage";
 import WomenSocksPage from "../pages/Site/womenSocksPage";
-import ManagementPage from "../pages/panel/MangementPage";
 import Orders from "../pages/panel/order";
 import InventoryPage from "../pages/panel/InventoryPage";
 import GoodsPage from "../pages/panel/goodsPage";
