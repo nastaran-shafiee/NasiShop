@@ -4,13 +4,15 @@ export interface inputInterface{
     type?:string,
     className?:string,
     placeholder?:string
+    error?:string | any
+validation?:any
 
 }
 export interface buttonInterface{
     title?:string,
     className?:string,
     onClick?:(event: React.MouseEvent<HTMLElement>)=>void
-   
+    type?: 'submit' | 'reset' | 'button' | undefined;
 
 }
 export interface childrennterface{
@@ -90,4 +92,7 @@ createdAt: number,
 id: number
   }
    
-   
+   export interface authInterface{
+    username:string,
+    password:string
+   }

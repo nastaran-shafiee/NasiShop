@@ -1,12 +1,23 @@
 import { inputInterface } from "../../types/interface";
 
-function Input({ type, className, placeholder }: inputInterface) {
+function Input({
+  type,
+  className,
+  placeholder,
+  error,
+  validation,
+}: inputInterface) {
   return (
-    <input
-      type={type}
-      className={`w-48 h-[1.6rem] border-[0.5px] ${className}`}
-      placeholder={placeholder}
-    />
+    <div>
+      {" "}
+      <input
+        type={type}
+        className={`w-48 h-[1.6rem] border-[0.5px] ${className}`}
+        placeholder={placeholder}
+        {...validation}
+      />
+      <p className="text-purple text-sm">{error}</p>
+    </div>
   );
 }
 export default Input;

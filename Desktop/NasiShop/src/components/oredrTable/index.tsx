@@ -1,5 +1,3 @@
-import img from "../../../public/img/shoe1.png";
-import { Icon } from "@iconify/react";
 import Table from "../table";
 import THead from "../thead";
 import Tr from "../tr";
@@ -8,10 +6,9 @@ import Td from "../td";
 import { fetchData } from "../../redux/fetchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useState } from "react";
 import { FetchSliceData, orderInterface } from "../../types/interface";
 import { usePagination } from "../../hooks/pagination";
-const ORDER_URL = "http://localhost:3002/orders";
+import { ORDER_URL } from "../../api/endpoint";
 // order table function--------------------------------------------------------
 function OrderTable() {
   const dispatch = useDispatch();

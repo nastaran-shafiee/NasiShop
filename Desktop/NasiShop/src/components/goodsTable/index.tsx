@@ -11,8 +11,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FetchSliceData, ProductInterface } from "../../types/interface";
 import { usePagination } from "../../hooks/pagination";
-// const product url-----------------------------------------------------
-export const PRODUCT_URL = "http://localhost:3002/products";
+import { PRODUCT_URL } from "../../api/endpoint";
 // goodtable ------------------------------------------------------------------------
 function GoodsTable() {
   const dispatch = useDispatch();
