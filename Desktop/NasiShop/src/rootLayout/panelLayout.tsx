@@ -4,6 +4,7 @@ import SubPanel from "../Layout/subpanel";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 function PanelLayout() {
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ function PanelLayout() {
     <>
       <PanelHeader />
       <SubPanel />
+
       <Outlet></Outlet>
     </>
   );

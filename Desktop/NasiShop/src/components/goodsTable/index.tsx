@@ -5,20 +5,30 @@ import THead from "../thead";
 import Tr from "../tr";
 import Th from "../th";
 import Td from "../td";
-import { fetchData } from "../../redux/fetchAction";
+import { fetchCategory, fetchData, fetchData2 } from "../../redux/fetchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
-import { FetchSliceData, ProductInterface } from "../../types/interface";
+import {
+  categoryInterface,
+  FetchSliceData,
+  ProductInterface,
+} from "../../types/interface";
 import { usePagination } from "../../hooks/pagination";
 import { PRODUCT_URL } from "../../api/endpoint";
+import { CATEGORY_URL } from "../../api/endpoint";
 // goodtable ------------------------------------------------------------------------
 function GoodsTable() {
   const dispatch = useDispatch();
   const data = useSelector((state: FetchSliceData) => state.fetchSlice.data);
+
+  const data2 = useSelector(
+    (state: FetchSliceData) => state.fetchSlice.category
+  );
+
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 4);
-
+  // use effect---------------------------------------------------------------------------------
   useEffect(() => {
     dispatch(
       fetchData({
@@ -30,6 +40,17 @@ function GoodsTable() {
     );
   }, [dispatch, currentPage, rowsPerPage]);
 
+  useEffect(() => {
+    dispatch(
+      fetchCategory({
+        page: currentPage,
+        limit: rowsPerPage,
+        setTotalPages: setTotalPages,
+        url: CATEGORY_URL,
+      })
+    );
+  }, [dispatch, currentPage, rowsPerPage]);
+  // return function------------------------------------------------------------------------------------
   return (
     <>
       {" "}
@@ -58,7 +79,13 @@ function GoodsTable() {
                       />
                     </Td>
                     <Td>{item.name}</Td>
-                    <Td>{item.category}</Td>
+                    <Td>
+                      {data2.map((cat: categoryInterface) => {
+                        if (item.category === cat.id) {
+                          return cat.name;
+                        }
+                      })}
+                    </Td>
                     <Td>
                       <div className=" text-right flex gap-3">
                         <Icon

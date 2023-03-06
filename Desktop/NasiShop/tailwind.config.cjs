@@ -16,6 +16,7 @@ module.exports = {
         gray2: "rgb(91, 91, 91)",
         purple: "rgb(180, 9, 216)",
         table: "rgb(175, 168, 173)",
+        back: "rgba(255, 255, 255, 0.694);",
       },
     },
   },

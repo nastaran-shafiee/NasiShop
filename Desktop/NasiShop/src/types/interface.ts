@@ -1,11 +1,16 @@
 import React from "react";
+import { Slice, PayloadAction , } from '@reduxjs/toolkit';
+
+
+import DressPage from "../pages/Site/dressPage";
 
 export interface inputInterface{
     type?:string,
     className?:string,
     placeholder?:string
     error?:string | any
-validation?:any
+validation?:any,
+label?:string
 
 }
 export interface buttonInterface{
@@ -21,7 +26,7 @@ export interface childrennterface{
 
 }
 export interface liInterface{
-    children?: JSX.Element | JSX.Element[];
+    children?: JSX.Element | JSX.Element[] | string;
     width?:string,
     height?:string
     border?:string,
@@ -66,6 +71,10 @@ export interface ProductInterface{
 }
 export interface initialstateInterface{
     data: any[];
+    data2: any[];
+    category:any[],
+    addModal:boolean
+
 }
 export interface FetchSliceData {
     fetchSlice:any
@@ -96,3 +105,24 @@ id: number
     username:string,
     password:string
    }
+   export interface categoryInterface{
+    id:number,
+    name:string
+   }
+   export interface optionInterface{
+    text?:string,
+    value?:number
+   }
+   export interface selectInterface{
+    text?:string,
+    
+   }
+   export interface FetchSliceInterface extends Slice<initialstateInterface> {
+    name: string;
+    initialState: initialstateInterface;
+    reducers: {
+      addProducts: (state: initialstateInterface, action: PayloadAction<any>) => void;
+      dataCategory: (state: initialstateInterface, action: PayloadAction<string>) => void;
+      changeAddMod: (state:initialstateInterface, action: PayloadAction<boolean>) => void;
+    };
+  }

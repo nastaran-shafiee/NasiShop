@@ -10,13 +10,15 @@ function PanelHeader() {
         <Nav>
           <Ul padding="px-8">
             <Li>
-              <Link to="/">بازگشت به سایت</Link>
+              <Link to="/" className="text-sm md:text-md lg:text-xl">
+                بازگشت به سایت
+              </Link>
             </Li>
 
             <Li>
               <img src={logo} alt="" className="w-12 h-12" />
             </Li>
-            <Li>مدیریت نسی شاپ</Li>
+            <Li>مدیریت نسی شاپ </Li>
           </Ul>
         </Nav>
       </header>
