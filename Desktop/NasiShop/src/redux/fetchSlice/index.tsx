@@ -8,7 +8,7 @@ import {
 const initialState: initialstateInterface = {
   data: [],
   data2: [],
-  category: [],
+
   addModal: false,
 };
 
@@ -19,14 +19,16 @@ const FetchSlice: FetchSliceInterface = createSlice({
     addProducts(state, action) {
       state.data = action.payload;
     },
-    dataCategory(state, action) {
-      state.category = action.payload;
-    },
+
     changeAddMod(state, action) {
       state.addModal = action.payload;
+    },
+    createDataSuccess: (state, action) => {
+      state.data.push(action.payload);
     },
   },
 });
 
-export const { addProducts, dataCategory, changeAddMod } = FetchSlice.actions;
+export const { addProducts, changeAddMod, createDataSuccess } =
+  FetchSlice.actions;
 export default FetchSlice.reducer;

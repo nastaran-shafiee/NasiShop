@@ -1,23 +1,29 @@
 import { selectInterface } from "../../types/interface";
 import Option from "../option";
-function SelectBox({ text }: selectInterface) {
+function SelectBox({ text, onChange, value }: selectInterface) {
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col gap-2">
       <label htmlFor="">{text}</label>
-      <select name="" id="" className="w-48">
+      <select
+        name=""
+        id=""
+        className="w-60  text-gray"
+        onChange={onChange}
+        value={value}
+      >
         <option value=""></option>
-        <Option value={1} text="کفش زنانه" />
-        <Option value={2} text="کفش مردانه" />
-        <Option value={3} text="کت مردانه" />
-        <Option value={4} text="پیراهن زنانه" />
-        <Option value={5} text="زیورآلات زنانه" />
-        <Option value={6} text="زیورالات مردانه" />
-        <Option value={7} text="بلوز زنانه" />
-        <Option value={8} text="بلوز مردانه" />
-        <Option value={9} text="جوراب زنانه" />
-        <Option value={10} text="جوراب مردانه" />
-        <Option value={11} text="شلوار زنانه" />
-        <Option value={12} text="شلوار مردانه" />
+        <Option value="کفش زنانه" text="کفش زنانه" />
+        <Option value="کفش مردانه" text="کفش مردانه" />
+        <Option value="کت مردانه" text="کت مردانه" />
+        <Option value="پیراهن زنانه" text="پیراهن زنانه" />
+        <Option value="زیور آلات زنانه" text="زیورآلات زنانه" />
+        <Option value="زیورآلات مردانه" text="زیورالات مردانه" />
+        <Option value="بلوز زنانه" text="بلوز زنانه" />
+        <Option value="بلوز مردانه" text="بلوز مردانه" />
+        <Option value="جوراب زنانه" text="جوراب زنانه" />
+        <Option value="جوراب مردانه" text="جوراب مردانه" />
+        <Option value="شلوار زنانه" text="شلوار زنانه" />
+        <Option value="شلوار مردانه" text="شلوار مردانه" />
       </select>
     </div>
   );

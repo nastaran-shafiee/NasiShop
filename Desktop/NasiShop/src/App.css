@@ -28,3 +28,6 @@ a {
 tr:nth-child(even) {
   background-color: rgb(209, 208, 208);
 }
+textarea {
+  resize: none !important;
+}

@@ -5,7 +5,7 @@ import THead from "../thead";
 import Tr from "../tr";
 import Th from "../th";
 import Td from "../td";
-import { fetchCategory, fetchData, fetchData2 } from "../../redux/fetchAction";
+import { fetchData, fetchData2 } from "../../redux/fetchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -40,16 +40,6 @@ function GoodsTable() {
     );
   }, [dispatch, currentPage, rowsPerPage]);
 
-  useEffect(() => {
-    dispatch(
-      fetchCategory({
-        page: currentPage,
-        limit: rowsPerPage,
-        setTotalPages: setTotalPages,
-        url: CATEGORY_URL,
-      })
-    );
-  }, [dispatch, currentPage, rowsPerPage]);
   // return function------------------------------------------------------------------------------------
   return (
     <>
@@ -72,20 +62,15 @@ function GoodsTable() {
                     <Td>
                       <img
                         className="rounded-full w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"
-                        src={img}
+                        src={`http://localhost:3002${item.image}`}
                         width="40"
                         height="40"
                         alt="Philip Harbach"
+                        crossOrigin="anonymous"
                       />
                     </Td>
                     <Td>{item.name}</Td>
-                    <Td>
-                      {data2.map((cat: categoryInterface) => {
-                        if (item.category === cat.id) {
-                          return cat.name;
-                        }
-                      })}
-                    </Td>
+                    <Td>{item.category}</Td>
                     <Td>
                       <div className=" text-right flex gap-3">
                         <Icon

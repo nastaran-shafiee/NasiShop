@@ -36,7 +36,7 @@ function LoginForm() {
           label="رمز عبور"
         />
 
-        <Button title="ورود" type="submit" />
+        <Button title="ورود" type="submit" className="w-60" />
         <p className="text-sm">فراموشی رمز عبور</p>
       </form>
     </>
