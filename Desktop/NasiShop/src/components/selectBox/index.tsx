@@ -1,17 +1,17 @@
 import { selectInterface } from "../../types/interface";
 import Option from "../option";
-function SelectBox({ text, onChange, value }: selectInterface) {
+function SelectBox({ text, onChange, value, className }: selectInterface) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="">{text}</label>
       <select
         name=""
         id=""
-        className="w-60  text-gray"
+        className={`w-60  text-gray ${className}`}
         onChange={onChange}
         value={value}
       >
-        <option value=""></option>
+        <option value="">دسته بندی ها</option>
         <Option value="کفش زنانه" text="کفش زنانه" />
         <Option value="کفش مردانه" text="کفش مردانه" />
         <Option value="کت مردانه" text="کت مردانه" />

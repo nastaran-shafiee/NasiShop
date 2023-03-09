@@ -13,7 +13,7 @@ import { PRODUCT_URL } from "../../api/endpoint";
 function AddModal() {
   const dispatch = useDispatch();
   // get value from input---------------------------------------------------=
-
+  const { register, handleSubmit } = useAddProduct();
   const {
     value: nameValue,
     valueChangeHandler: nameChange,
@@ -45,8 +45,7 @@ function AddModal() {
     reset: resetFile,
   } = useAddProduct();
   // function send to server-----------------------------------------------------------
-  function sendToServer(event: FormEvent) {
-    event.preventDefault();
+  function sendToServer() {
     const formData = new FormData();
     formData.append("image", fileimg);
     formData.append("name", nameValue);
@@ -54,7 +53,6 @@ function AddModal() {
     formData.append("quantity", quntityValue);
     formData.append("description", areaValue);
     formData.append("category", selectValue);
-
     dispatch(createData(formData, PRODUCT_URL));
 
     resetName(),
@@ -76,7 +74,7 @@ function AddModal() {
       <form
         action=""
         className="w-[70%] h-[98%] bg-table flex flex-col md:w-[70%] items-center gap-4"
-        onSubmit={sendToServer}
+        onSubmit={handleSubmit(sendToServer)}
       >
         <div className="flex justify-between w-[90%] pt-4">
           <p>افزودن/ویرایش کالا</p>
@@ -100,18 +98,21 @@ function AddModal() {
             label="نام کالا"
             onChange={nameChange}
             value={nameValue}
+            validation={{ ...register("name") }}
           />
           <Input
             type="text"
             label="قیمت"
             onChange={priceChange}
             value={priceValue}
+            validation={{ ...register("price") }}
           />
           <Input
             type="text"
             label="موجودی"
             onChange={quantityChange}
             value={quntityValue}
+            validation={{ ...register("quentity") }}
           />
           <div className="flex flex-col gap-2">
             <label htmlFor="">توضیحات</label>

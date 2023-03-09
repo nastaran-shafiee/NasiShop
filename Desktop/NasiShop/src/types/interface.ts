@@ -46,10 +46,12 @@ export interface thInterface {
   text?: string;
 }
 export interface fetchDataInterface {
-  page: number;
+  page?: number;
   limit: number;
   setTotalPages: React.Dispatch<React.SetStateAction<number>>;
-  url: string;
+  url?: string;
+  category?: string | undefined;
+  delivered?: boolean | undefined;
 }
 export interface ProductInterface {
   name: string;
@@ -110,22 +112,29 @@ export interface optionInterface {
 export interface selectInterface {
   text?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  className: string;
 }
-export interface FetchSliceInterface extends Slice<initialstateInterface> {
+export interface FetchSliceInterface
+  extends Slice<
+    initialstateInterface,
+    {
+      addProducts: (
+        state: initialstateInterface,
+        action: PayloadAction<any>
+      ) => void;
+      dataCategory: (
+        state: initialstateInterface,
+        action: PayloadAction<string>
+      ) => void;
+      changeAddMod: (
+        state: initialstateInterface,
+        action: PayloadAction<boolean>
+      ) => void;
+      createDataSuccess: (
+        state: initialstateInterface,
+        action: PayloadAction<any>
+      ) => void;
+    }
+  > {
   name: string;
-  initialState: initialstateInterface;
-  reducers: {
-    addProducts: (
-      state: initialstateInterface,
-      action: PayloadAction<any>
-    ) => void;
-    dataCategory: (
-      state: initialstateInterface,
-      action: PayloadAction<string>
-    ) => void;
-    changeAddMod: (
-      state: initialstateInterface,
-      action: PayloadAction<boolean>
-    ) => void;
-  };
 }
