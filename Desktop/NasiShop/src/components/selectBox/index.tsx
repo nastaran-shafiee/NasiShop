@@ -7,7 +7,7 @@ function SelectBox({ text, onChange, value, className }: selectInterface) {
       <select
         name=""
         id=""
-        className={`w-60  text-gray ${className}`}
+        className={`w-24  text-gray ${className} md:w-60`}
         onChange={onChange}
         value={value}
       >

@@ -1,8 +1,8 @@
-import Table from "../table";
-import THead from "../thead";
-import Tr from "../tr";
-import Th from "../th";
-import Td from "../td";
+import Table from "../../components/table";
+import THead from "../../components/thead";
+import Tr from "../../components/tr";
+import Th from "../../components/th";
+import Td from "../../components/td";
 import { fetchData } from "../../redux/fetchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -31,7 +31,7 @@ function InvestoryTable() {
   // return function--------------------------------------------------------------
   return (
     <>
-      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[18rem] ">
+      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[16rem] ">
         <Table>
           <THead>
             <Tr>

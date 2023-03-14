@@ -31,3 +31,6 @@ tr:nth-child(even) {
 textarea {
   resize: none !important;
 }
+.buttonwidth {
+  width: 6rem !important;
+}

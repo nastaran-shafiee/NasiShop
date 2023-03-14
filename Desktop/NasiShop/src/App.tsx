@@ -8,12 +8,15 @@ import {
 } from "react-router-dom";
 import { routes } from "./Routs";
 const Router = createBrowserRouter(routes);
+
 // app function
 function App(): JSX.Element {
   return (
-    <RouterProvider router={Router}>
-      <div className="App"></div>
-    </RouterProvider>
+    <>
+      <RouterProvider router={Router}>
+        <div className="App"></div>
+      </RouterProvider>
+    </>
   );
 }
 

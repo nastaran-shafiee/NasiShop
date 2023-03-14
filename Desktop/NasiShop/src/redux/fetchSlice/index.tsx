@@ -8,8 +8,11 @@ import {
 const initialState: initialstateInterface = {
   data: [],
   data2: [],
-
   addModal: false,
+  deleteModal: false,
+  id: 0,
+  editProduct: {},
+  editMode: false,
 };
 
 const FetchSlice: FetchSliceInterface = createSlice({
@@ -26,9 +29,38 @@ const FetchSlice: FetchSliceInterface = createSlice({
     createDataSuccess: (state, action) => {
       state.data.push(action.payload);
     },
+    deleteDataSucces(state, action) {
+      state.data = state.data.filter((item: any) => item.id !== action.payload);
+    },
+    openDeleteModal(state, action) {
+      state.deleteModal = action.payload;
+    },
+    getId(state, action) {
+      state.id = action.payload;
+    },
+    updateDataSuccess: (state, action) => {
+      const index = state.data.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const updatedData = [...state.data]; // create a new copy of the array
+      updatedData[index] = action.payload.data; // update the item at the specified index
+      return { ...state, data: updatedData };
+    },
+    editMode(state, action) {
+      state.editMode = action.payload.mode;
+      state.editProduct = action.payload.item;
+    },
   },
 });
 
-export const { addProducts, changeAddMod, createDataSuccess } =
-  FetchSlice.actions;
+export const {
+  addProducts,
+  changeAddMod,
+  createDataSuccess,
+  deleteDataSucces,
+  openDeleteModal,
+  getId,
+  updateDataSuccess,
+  editMode,
+} = FetchSlice.actions;
 export default FetchSlice.reducer;

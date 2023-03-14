@@ -6,68 +6,112 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeAddMod } from "../../redux/fetchSlice";
 import { createPortal } from "react-dom";
 import useAddProduct from "../../hooks/addProduct";
-import { FormEvent, useState } from "react";
-import { createData } from "../../redux/fetchAction";
+import { FormEvent, useEffect, useState } from "react";
+import { createData, updateData } from "../../redux/fetchAction";
 import { PRODUCT_URL } from "../../api/endpoint";
+import { FetchSliceData } from "../../types/interface";
 
 function AddModal() {
   const dispatch = useDispatch();
+  const editMode = useSelector(
+    (state: FetchSliceData) => state.fetchSlice.editMode
+  );
+  const editProduct = useSelector(
+    (state: FetchSliceData) => state.fetchSlice.editProduct
+  );
   // get value from input---------------------------------------------------=
   const { register, handleSubmit } = useAddProduct();
   const {
     value: nameValue,
     valueChangeHandler: nameChange,
     reset: resetName,
+    valueEdit: nameEdit,
   } = useAddProduct();
   const {
     value: priceValue,
     valueChangeHandler: priceChange,
     reset: resetPrice,
+    valueEdit: priceEdit,
   } = useAddProduct();
   const {
     value: quntityValue,
     valueChangeHandler: quantityChange,
     reset: resetQuantity,
+    valueEdit: quantityEdit,
   } = useAddProduct();
   const {
     value: areaValue,
     valueChangeHandler: areaChanging,
     reset: resetArea,
+    valueEdit: areaEdit,
   } = useAddProduct();
   const {
     value: selectValue,
     valueChangeHandler: categoryChanging,
     reset: resetCategory,
+    valueEdit: categoryEdit,
   } = useAddProduct();
   const {
     file: fileimg,
     handleFileChange: handleFileChanging,
     reset: resetFile,
+    fileEdit: fileEdit,
   } = useAddProduct();
   // function send to server-----------------------------------------------------------
   function sendToServer() {
-    const formData = new FormData();
-    formData.append("image", fileimg);
-    formData.append("name", nameValue);
-    formData.append("price", priceValue);
-    formData.append("quantity", quntityValue);
-    formData.append("description", areaValue);
-    formData.append("category", selectValue);
-    dispatch(createData(formData, PRODUCT_URL));
+    if (!editMode) {
+      const formData = new FormData();
+      formData.append("image", fileimg);
+      formData.append("name", nameValue);
+      formData.append("price", priceValue);
+      formData.append("quantity", quntityValue);
+      formData.append("description", areaValue);
+      formData.append("category", selectValue);
+      dispatch(createData(formData, PRODUCT_URL));
+      resetName(),
+        resetPrice(),
+        resetQuantity(),
+        resetArea(),
+        resetCategory(),
+        resetFile();
+      console.log(formData);
+    } else {
+      const updatedFormData = new FormData();
+      updatedFormData.append("id", editProduct.id); // pass the id of the item to be updated
+      updatedFormData.append("image", fileimg);
 
-    resetName(),
-      resetPrice(),
-      resetQuantity(),
-      resetArea(),
-      resetCategory(),
-      resetFile();
+      updatedFormData.append("name", nameValue);
+      updatedFormData.append("price", priceValue);
+      updatedFormData.append("quantity", quntityValue);
+      updatedFormData.append("description", areaValue);
+      updatedFormData.append("category", selectValue);
+      dispatch(updateData(editProduct.id, updatedFormData, PRODUCT_URL));
+      resetName(),
+        resetPrice(),
+        resetQuantity(),
+        resetArea(),
+        resetCategory(),
+        resetFile();
+      console.log(updatedFormData);
+    }
   }
   // close modal---------------------------------------------------------------
   function closeModal() {
     dispatch(changeAddMod(false));
   }
+  // useeffect for edit mode------------------------------------------------
+  useEffect(() => {
+    if (editMode) {
+      nameEdit(editProduct.name);
+      priceEdit(editProduct.price);
+      quantityEdit(editProduct.quantity);
+      areaEdit(editProduct.description);
+      categoryEdit(editProduct.category);
+      console.log(editProduct);
+    }
+  }, [editMode]);
   // mpdal root------------------------------------------------------------------
-  const modalRoot = document.getElementById("modal");
+  const modalRoot = document.getElementById("modal") as HTMLElement;
   // return----------------------------------------------------------------------
   return createPortal(
     <div className="w-full h-full bg-back absolute t-0 z-50 flex justify-center rounded-md mt-0 pt-8">
@@ -130,7 +174,11 @@ function AddModal() {
             value={selectValue}
           />
         </div>
-        <Button type="submit" title="ذخیره" className="bg-purple mt-8" />
+        <Button
+          type="submit"
+          title={editMode ? "آپدیت" : "ذخیره"}
+          className="bg-purple mt-8"
+        />
       </form>
     </div>,
     modalRoot

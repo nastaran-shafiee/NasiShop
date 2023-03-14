@@ -1,8 +1,8 @@
-import Table from "../table";
-import THead from "../thead";
-import Tr from "../tr";
-import Th from "../th";
-import Td from "../td";
+import Table from "../../components/table";
+import THead from "../../components/thead";
+import Tr from "../../components/tr";
+import Th from "../../components/th";
+import Td from "../../components/td";
 import { fetchData } from "../../redux/fetchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ function OrderTable() {
   const data = useSelector((state: FetchSliceData) => state.fetchSlice.data);
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 5);
-  const [deliver, setDeliver] = useState<boolean | undefined>(true);
+  const [deliver, setDeliver] = useState<boolean | undefined>(undefined);
   const [design, setDesign] = useState<boolean>(false);
   const [all, setAll] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
@@ -38,45 +38,47 @@ function OrderTable() {
     setAll(false);
     setSelected("deliver");
   }
+  //umdeliverd function-------------------------------------------------------
   function undeliverdFunction() {
     setDeliver(false);
     setDesign(false);
     setAll(false);
     setSelected("undeliverd");
   }
+  // all function----------------------------------------------------------------
   function allFunction() {
     setDeliver(undefined);
     setDesign(false);
     setAll(true);
     setSelected("all");
   }
-
+  // return function---------------------------------------------------------------
   return (
     <>
       <div className="flex w-[95%] justify-between pr-6 mt-8">
         <h1 className="text-purple text-sm md:text-3xl">مدیریت سفارشات</h1>
-        <div className={`flex gap-6 text-gray text-[10px] cursor-pointer`}>
+        <div className={`flex gap-6 text-gray cursor-pointer`}>
           <p
             onClick={deliverdFunction}
-            className={selected === "deliver" ? "text-purple" : ""}
+            className={selected === "deliver" ? "text-purple" : " "}
           >
-            سفارش های تحویل شده
+            تحویل شده
           </p>
           <p
             onClick={undeliverdFunction}
             className={selected === "undeliverd" ? "text-purple" : ""}
           >
-            سفارش های در انتظارارسال
+            در انتظارارسال
           </p>
           <p
             onClick={allFunction}
             className={selected === "all" ? "text-purple" : ""}
           >
-            تمامی سفارش ها
+            همه
           </p>
         </div>
       </div>
-      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[18rem]">
+      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[16rem]">
         <Table>
           <THead>
             <Tr>
@@ -93,7 +95,14 @@ function OrderTable() {
                   <Tr key={item.id}>
                     <Td>{item.username}</Td>
                     <Td>{item.prices}</Td>
-                    <Td>{item.createdAt}</Td>
+                    <Td>
+                      {new Date(item.createdAt).toLocaleDateString("fa-IR", {
+                        hour: undefined,
+                        minute: undefined,
+                        second: undefined,
+                      })}
+                    </Td>
+
                     <Td>وصعیت سفارش</Td>
                   </Tr>
                 );

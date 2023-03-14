@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { instance } from "../../api/contants";
 import { authInterface } from "../../types/interface";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const loginUserSrvice = (data: authInterface) =>
   instance.post("/auth/login", data);
 
@@ -47,9 +49,10 @@ const useAuth = () => {
         Cookies.set("token", res.data?.accessToken);
 
         navigate("/panel/goods");
+      } else {
       }
     } catch (ex) {
-      console.log(ex);
+      toast("شما دسترسی لازم برای ورود را ندارید");
     }
   };
 

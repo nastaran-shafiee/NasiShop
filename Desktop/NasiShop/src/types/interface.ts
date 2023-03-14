@@ -69,8 +69,11 @@ export interface ProductInterface {
 export interface initialstateInterface {
   data: any[];
   data2: any[];
-
   addModal: boolean;
+  deleteModal: boolean;
+  id: number;
+  editProduct: any;
+  editMode: boolean;
 }
 export interface FetchSliceData {
   fetchSlice: any;
@@ -112,29 +115,31 @@ export interface optionInterface {
 export interface selectInterface {
   text?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  className: string;
+  className?: string;
+  value?: string;
 }
+//
 export interface FetchSliceInterface
-  extends Slice<
-    initialstateInterface,
-    {
-      addProducts: (
-        state: initialstateInterface,
-        action: PayloadAction<any>
-      ) => void;
-      dataCategory: (
-        state: initialstateInterface,
-        action: PayloadAction<string>
-      ) => void;
-      changeAddMod: (
-        state: initialstateInterface,
-        action: PayloadAction<boolean>
-      ) => void;
-      createDataSuccess: (
-        state: initialstateInterface,
-        action: PayloadAction<any>
-      ) => void;
-    }
-  > {
-  name: string;
-}
+  extends Builder<
+    Slice<
+      initialstateInterface,
+      {
+        addProducts: (
+          state: initialstateInterface,
+          action: PayloadAction<ProductInterface[]>
+        ) => void;
+        dataCategory: (
+          state: initialstateInterface,
+          action: PayloadAction<string>
+        ) => void;
+        changeAddMod: (
+          state: initialstateInterface,
+          action: PayloadAction<boolean>
+        ) => void;
+        createDataSuccess: (
+          state: initialstateInterface,
+          action: PayloadAction<ProductInterface>
+        ) => void;
+      }
+    >
+  > {}

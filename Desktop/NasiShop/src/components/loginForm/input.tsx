@@ -16,7 +16,7 @@ function LoginForm() {
   return (
     <>
       <form
-        className="w-80 h-96 bg-White flex flex-col items-center gap-4 p-4 text-gray"
+        className="w-80 h-[30rem] bg-White flex flex-col items-center gap-4 p-4 text-gray"
         onSubmit={handleSubmit(handleLoginUser)}
       >
         <h1 className="text-2xl">ورود به پنل ادمین</h1>

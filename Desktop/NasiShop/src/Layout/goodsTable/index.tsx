@@ -1,11 +1,11 @@
 import img from "../../../public/img/shoe1.png";
 import { Icon } from "@iconify/react";
-import Table from "../table";
-import THead from "../thead";
-import Tr from "../tr";
-import Th from "../th";
-import Td from "../td";
-import { fetchData, fetchData2 } from "../../redux/fetchAction";
+import Table from "../../components/table";
+import THead from "../../components/thead";
+import Tr from "../../components/tr";
+import Th from "../../components/th";
+import Td from "../../components/td";
+import { deleteData, fetchData, fetchData2 } from "../../redux/fetchAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -17,9 +17,14 @@ import {
 import { usePagination } from "../../hooks/pagination";
 import { PRODUCT_URL } from "../../api/endpoint";
 
-import SelectBox from "../selectBox";
-import Button from "../button";
-import { changeAddMod } from "../../redux/fetchSlice";
+import SelectBox from "../../components/selectBox";
+import Button from "../../components/button";
+import {
+  changeAddMod,
+  editMode,
+  getId,
+  openDeleteModal,
+} from "../../redux/fetchSlice";
 
 // goodtable ------------------------------------------------------------------------
 function GoodsTable() {
@@ -35,6 +40,7 @@ function GoodsTable() {
   function openAddModal() {
     const add = true;
     dispatch(changeAddMod(add));
+    dispatch(editMode({ mode: false }));
   }
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 4);
@@ -42,6 +48,7 @@ function GoodsTable() {
   function filterByCategory(category: string) {
     setSelectedCategory(category);
   }
+
   // use effect---------------------------------------------------------------------------------
   useEffect(() => {
     dispatch(
@@ -53,8 +60,17 @@ function GoodsTable() {
         category: selectedCategory,
       })
     );
-  }, [dispatch, currentPage, rowsPerPage, selectedCategory]);
-
+  }, [dispatch, currentPage, rowsPerPage, selectedCategory, data]);
+  // function delete product----------------------------------------------------------------------------
+  function deleteProduct(id: number) {
+    dispatch(getId(id));
+    dispatch(openDeleteModal(true));
+  }
+  //function edit mode-------------------------------------------------------------------------------
+  function editProduct(item: any) {
+    dispatch(editMode({ mode: true, item: item }));
+    dispatch(changeAddMod(true));
+  }
   // return function------------------------------------------------------------------------------------
   return (
     <>
@@ -67,7 +83,7 @@ function GoodsTable() {
         <Button title="افزودن کالا" onClick={openAddModal} />
       </div>
 
-      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[17rem]">
+      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[16.5rem]">
         <Table>
           <THead>
             <Tr>
@@ -95,16 +111,24 @@ function GoodsTable() {
                     <Td>{item.name}</Td>
                     <Td>{item.category}</Td>
                     <Td>
-                      <div className=" text-right flex gap-3">
+                      <div className=" text-right flex gap-8">
                         <Icon
                           icon="material-symbols:delete-outline"
                           width="20"
                           height="20"
+                          className="text-[red]"
+                          onClick={() => {
+                            deleteProduct(item.id);
+                          }}
                         />
                         <Icon
                           icon="material-symbols:edit"
                           width="20"
                           height="20"
+                          className="text-green-700"
+                          onClick={() => {
+                            editProduct(item);
+                          }}
                         />
                       </div>
                     </Td>

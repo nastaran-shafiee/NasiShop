@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 function useAddProduct() {
   const [entredValue, setEntredValue] = useState(" ");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<any>(null);
   //   handle file change------------------------------------------------
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -41,6 +41,12 @@ function useAddProduct() {
     setEntredValue(" ");
     setFile(null);
   };
+  const valueEdit = (value: string) => {
+    setEntredValue(value);
+  };
+  const fileEdit = (value: File) => {
+    setFile(value);
+  };
   //   return function----------------------------------------------------------------------
   return {
     value: entredValue,
@@ -51,6 +57,8 @@ function useAddProduct() {
     file,
     register,
     handleSubmit,
+    valueEdit,
+    fileEdit,
   };
 }
 export default useAddProduct;

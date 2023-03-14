@@ -1,4 +1,4 @@
-import InvestoryTable from "../../../components/investory";
+import InvestoryTable from "../../../Layout/investory";
 import Button from "../../../components/button";
 function InventoryPage() {
   return (

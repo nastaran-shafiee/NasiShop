@@ -1,4 +1,4 @@
-import OrderTable from "../../../components/oredrTable";
+import OrderTable from "../../../Layout/oredrTable";
 
 function Orders() {
   return (
