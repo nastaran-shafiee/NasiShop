@@ -11,7 +11,7 @@ export interface inputInterface {
   validation?: any;
   label?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
+  value?: string | number;
 }
 export interface buttonInterface {
   title?: string;

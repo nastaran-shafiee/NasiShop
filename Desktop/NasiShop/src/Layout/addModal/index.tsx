@@ -20,37 +20,43 @@ function AddModal() {
     (state: FetchSliceData) => state.fetchSlice.editProduct
   );
   // get value from input---------------------------------------------------=
-  const { register, handleSubmit } = useAddProduct();
+  const { register, handleSubmit, errors } = useAddProduct();
+  // name input-------------------------------------------------
   const {
     value: nameValue,
     valueChangeHandler: nameChange,
     reset: resetName,
     valueEdit: nameEdit,
   } = useAddProduct();
+  // price input------------------------------------
   const {
     value: priceValue,
     valueChangeHandler: priceChange,
     reset: resetPrice,
     valueEdit: priceEdit,
   } = useAddProduct();
+  // quntity input----------------------------------------------
   const {
     value: quntityValue,
     valueChangeHandler: quantityChange,
     reset: resetQuantity,
     valueEdit: quantityEdit,
   } = useAddProduct();
+  // area input----------------------------------------------------
   const {
     value: areaValue,
     valueChangeHandler: areaChanging,
     reset: resetArea,
     valueEdit: areaEdit,
   } = useAddProduct();
+  // select iput-----------------------------------
   const {
     value: selectValue,
     valueChangeHandler: categoryChanging,
     reset: resetCategory,
     valueEdit: categoryEdit,
   } = useAddProduct();
+  // file input----------------------------------------
   const {
     file: fileimg,
     handleFileChange: handleFileChanging,
@@ -142,6 +148,7 @@ function AddModal() {
             label="نام کالا"
             onChange={nameChange}
             value={nameValue}
+            error={errors.name?.message}
             validation={{ ...register("name") }}
           />
           <Input
@@ -149,6 +156,7 @@ function AddModal() {
             label="قیمت"
             onChange={priceChange}
             value={priceValue}
+            error={errors.price?.message}
             validation={{ ...register("price") }}
           />
           <Input
@@ -156,6 +164,7 @@ function AddModal() {
             label="موجودی"
             onChange={quantityChange}
             value={quntityValue}
+            error={errors.quentity?.message}
             validation={{ ...register("quentity") }}
           />
           <div className="flex flex-col gap-2">

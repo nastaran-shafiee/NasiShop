@@ -50,6 +50,9 @@ const FetchSlice: FetchSliceInterface = createSlice({
       state.editMode = action.payload.mode;
       state.editProduct = action.payload.item;
     },
+    setFetchData(state, action) {
+      state.data = action.payload;
+    },
   },
 });
 
@@ -62,5 +65,6 @@ export const {
   getId,
   updateDataSuccess,
   editMode,
+  setFetchData,
 } = FetchSlice.actions;
 export default FetchSlice.reducer;

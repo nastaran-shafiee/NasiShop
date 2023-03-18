@@ -53,7 +53,7 @@ export const createData =
   (data: ProductInterface, url: string) => async (dispatch: Dispatch) => {
     try {
       const response = await instance.post(url, data);
-      console.log(data);
+
       dispatch(createDataSuccess(response.data));
     } catch (error) {
       console.log(error);
