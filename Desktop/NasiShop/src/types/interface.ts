@@ -48,7 +48,7 @@ export interface thInterface {
 export interface fetchDataInterface {
   page?: number;
   limit: number;
-  setTotalPages: React.Dispatch<React.SetStateAction<number>>;
+  setTotalPages?: React.Dispatch<React.SetStateAction<number>> | undefined;
   url?: string;
   category?: string | undefined;
   delivered?: boolean | undefined;
@@ -74,6 +74,8 @@ export interface initialstateInterface {
   id: number;
   editProduct: any;
   editMode: boolean;
+  menCategory: any[];
+  womanCategory: any[];
 }
 export interface FetchSliceData {
   fetchSlice: any;

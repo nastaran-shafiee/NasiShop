@@ -68,8 +68,8 @@ function InvestoryTable() {
   // return function--------------------------------------------------------------
   return (
     <>
-      <div className="flex w-[95%] justify-between pr-6 mt-8">
-        <h1 className="text-purple text-sm md:text-3xl">
+      <div className="flex w-[90%] justify-between pr-6 mt-8">
+        <h1 className="text-purple text-sm md:text-2xl">
           مدیریت موجودی و قیمت
         </h1>
         <Button
@@ -91,7 +91,7 @@ function InvestoryTable() {
         />
       </div>
 
-      <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[18rem] ">
+      <div className="w-full max-w-[90%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[18rem] ">
         <Table>
           <THead>
             <Tr>

@@ -13,6 +13,8 @@ const initialState: initialstateInterface = {
   id: 0,
   editProduct: {},
   editMode: false,
+  menCategory: {},
+  womanCategory: {},
 };
 
 const FetchSlice: FetchSliceInterface = createSlice({
@@ -53,6 +55,32 @@ const FetchSlice: FetchSliceInterface = createSlice({
     setFetchData(state, action) {
       state.data = action.payload;
     },
+    // forctegory-------------------------------------------------------------------------------
+    addMen(state, action) {
+      state.menCategory = action.payload;
+    },
+    addMen2(state, action) {
+      state.menCategory = action.payload;
+    },
+    addWomen(state, action) {
+      state.womanCategory = action.payload;
+    },
+    editMen: (state, action) => {
+      const index = state.menCategory.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const updatedData = [...state.menCategory]; // create a new copy of the array
+      updatedData[index] = action.payload.data; // update the item at the specified index
+      return { ...state, data: updatedData };
+    },
+    editWoman: (state, action) => {
+      const index = state.womanCategory.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const updatedData = [...state.womanCategory]; // create a new copy of the array
+      updatedData[index] = action.payload.data; // update the item at the specified index
+      return { ...state, data: updatedData };
+    },
   },
 });
 
@@ -66,5 +94,10 @@ export const {
   updateDataSuccess,
   editMode,
   setFetchData,
+  addMen,
+  addWomen,
+  editMen,
+  editWoman,
+  addMen2,
 } = FetchSlice.actions;
 export default FetchSlice.reducer;

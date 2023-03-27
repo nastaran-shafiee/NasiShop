@@ -26,6 +26,7 @@ import WomenSocksPage from "../pages/Site/womenSocksPage";
 import Orders from "../pages/panel/order";
 import InventoryPage from "../pages/panel/InventoryPage";
 import GoodsPage from "../pages/panel/goodsPage";
+import Setting from "../pages/panel/settingPage";
 // const rout--------------------------------------------
 export const routes: RouteObject[] = [
   {
@@ -68,6 +69,10 @@ export const routes: RouteObject[] = [
       {
         path: "goods",
         element: <GoodsPage />,
+      },
+      {
+        path: "setting",
+        element: <Setting />,
       },
     ],
   },

@@ -18,14 +18,8 @@ function useAddProduct() {
   const loginSchema = yup.object({
     name: yup.string().required("پر کردن این فیلد الزامی است"),
 
-    price: yup
-      .number()
-      .required("پر کردن این فیلد الزامی است")
-   
-    quentity: yup
-      .number()
-      .required("پر کردن این فیلد الزامی است")
-      
+    price: yup.number().required("پر کردن این فیلد الزامی است"),
+    quentity: yup.number().required("پر کردن این فیلد الزامی است"),
   });
 
   const {

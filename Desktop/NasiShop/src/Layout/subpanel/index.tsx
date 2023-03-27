@@ -28,6 +28,14 @@ function SubPanel() {
             سفارش ها
           </NavLink>
         </Li>
+        <Li>
+          <NavLink
+            to="/panel/setting"
+            className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+          >
+            تنظیمات
+          </NavLink>
+        </Li>
       </div>
     </div>
   );
