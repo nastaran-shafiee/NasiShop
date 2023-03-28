@@ -8,6 +8,7 @@ import { MEN_URL, PRODUCT_URL } from "../../../api/endpoint";
 import { addMen } from "../../../redux/fetchSlice";
 import { instance } from "../../../api/contants";
 import MenHeader from "../../../Layout/menHeader";
+import MySlider from "../../../components/Slider";
 
 function MenPage() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function MenPage() {
   return (
     <>
       <MenHeader />
+      <MySlider />
       {menCategory && data && (
         <>
           <Products

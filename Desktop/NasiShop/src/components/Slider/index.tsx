@@ -1,30 +1,26 @@
-import React from "react";
 import Slider from "react-slick";
+import image from "../../../public/img/2.png";
+import image2 from "../../../public/img/slider1.png";
+import image3 from "../../../public/img/slider2.png";
+
+import Carousel from "react-elastic-carousel";
 
 const MySlider = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  };
-
+  const items = [
+    { id: 1, title: "Item 1", img: image2 },
+    { id: 1, title: "Item 1", img: image3 },
+    { id: 1, title: "Item 1", img: image },
+  ];
   return (
-    <Slider {...settings}>
-      <div>
-        <h3>Slide 1</h3>
-      </div>
-      <div>
-        <h3>Slide 2</h3>
-      </div>
-      <div>
-        <h3>Slide 3</h3>
-      </div>
-      <div>
-        <h3>Slide 4</h3>
-      </div>
-    </Slider>
+    <div className="hidden md:block mt-4">
+      <Carousel enableAutoPlay autoPlaySpeed={2000} infinite>
+        {items.map((item) => (
+          <div key={item.id}>
+            <img src={item.img} alt="" />
+          </div>
+        ))}
+      </Carousel>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@
   font-size: 1.125rem;
   box-sizing: border-box;
 }
+
 .activeLink {
   display: flex;
   width: 100%;

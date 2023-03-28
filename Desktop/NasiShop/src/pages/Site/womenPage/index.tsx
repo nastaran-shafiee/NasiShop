@@ -6,6 +6,7 @@ import { fetchData2 } from "../../../redux/fetchAction";
 import { FetchSliceData, ProductInterface } from "../../../types/interface";
 import { PRODUCT_URL, WOMEN_URL } from "../../../api/endpoint";
 import { instance } from "../../../api/contants";
+import MySlider from "../../../components/Slider";
 
 function WomenPage() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function WomenPage() {
   return (
     <>
       <WomenHeader />
+      <MySlider />
       {womenCategory && data && (
         <>
           <Products
