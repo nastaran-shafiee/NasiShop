@@ -95,7 +95,7 @@ function Setting() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await instance.get(WOMEN_URL);
+        const response = await instance.get(MEN_URL);
         const data = response.data;
         if (data) {
           setMen1(data.women1);

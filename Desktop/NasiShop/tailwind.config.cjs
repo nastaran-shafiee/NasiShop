@@ -17,6 +17,7 @@ module.exports = {
         purple: "rgb(180, 9, 216)",
         table: "rgb(175, 168, 173)",
         back: "rgba(0, 0, 0, 0.794);",
+        sort: "#eee",
       },
     },
   },

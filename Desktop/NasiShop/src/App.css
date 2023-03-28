@@ -34,3 +34,35 @@ textarea {
 .buttonwidth {
   width: 6rem !important;
 }
+.sorting {
+  color: rgb(175, 173, 173);
+}
+.landing {
+  color: rgb(180, 9, 216) !important;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+button {
+  animation: none;
+}
+button:hover {
+  color: white;
+
+  outline: none;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.274),
+      rgba(255, 255, 255, 0.274)
+    ),
+    none;
+  transition: all 0.5s ease-in-out;
+  animation: pulse 1s infinite;
+}

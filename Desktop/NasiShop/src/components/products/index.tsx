@@ -1,24 +1,31 @@
 import Product from "../product";
 import { ProductInterface } from "../../types/interface";
 import { Icon } from "@iconify/react";
+import { NavLink, useNavigate } from "react-router-dom";
+
 interface ProductsProps {
   categoryProduct: string;
   data: ProductInterface[];
 }
 
 function Products({ categoryProduct, data }: ProductsProps) {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col p-8">
       <div className="flex gap-2">
         <div className="text-2xl text-purple items-center">
-          {categoryProduct}
+          <NavLink to={`:${categoryProduct}`} className="landing">
+            {categoryProduct}
+          </NavLink>
         </div>
-        <Icon
-          icon="material-symbols:arrow-back-ios"
-          width="25"
-          height="25"
-          className="self-center text-purple"
-        />
+        <NavLink to={`:${categoryProduct}`} className="self-center">
+          <Icon
+            icon="material-symbols:arrow-back-ios"
+            width="25"
+            height="25"
+            className=" text-purple"
+          />
+        </NavLink>
       </div>
       <div className="grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-4 ">
         {data &&
@@ -29,6 +36,9 @@ function Products({ categoryProduct, data }: ProductsProps) {
                 price={product.price}
                 img={`http://localhost:3002${product.image}`}
                 key={product.id}
+                onClick={() => {
+                  navigate(`/product/:${product.id}`);
+                }}
               />
             );
           })}

@@ -16,8 +16,8 @@ function SelectBox({ text, onChange, value, className }: selectInterface) {
         <Option value="کفش مردانه" text="کفش مردانه" />
         <Option value="کت مردانه" text="کت مردانه" />
         <Option value="پیراهن زنانه" text="پیراهن زنانه" />
-        <Option value="زیور آلات زنانه" text="زیورآلات زنانه" />
-        <Option value="زیورآلات مردانه" text="زیورالات مردانه" />
+        <Option value="اکسسوری زنانه" text="زیورآلات زنانه" />
+        <Option value="اکسسوری مردانه" text="زیورالات مردانه" />
         <Option value="بلوز زنانه" text="بلوز زنانه" />
         <Option value="بلوز مردانه" text="بلوز مردانه" />
         <Option value="جوراب زنانه" text="جوراب زنانه" />

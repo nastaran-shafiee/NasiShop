@@ -21,6 +21,8 @@ import "react-toastify/dist/ReactToastify.css";
 function InvestoryTable() {
   const dispatch = useDispatch();
   const data = useSelector((state: FetchSliceData) => state.fetchSlice.data);
+  const newData1 = JSON.parse(JSON.stringify(data));
+  const [color,setColor]=
   // use hook pagination-----------------------------------------------------
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 4);
@@ -37,32 +39,47 @@ function InvestoryTable() {
     );
   }, [dispatch, currentPage, rowsPerPage]);
   // handelquntitychange function--------------------------------------------------------
-  const handleQuantityChange = (
+  const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    index: number
+    index: number,
+    property: string
   ) => {
     const newData = [...data];
     const updatedItem = {
       ...newData[index],
-      quantity: Number(e.target.value),
+      [property]: Number(e.target.value),
     };
     newData[index] = updatedItem;
     setEditedData((prevData) => [...prevData, updatedItem]);
     dispatch(setFetchData(newData));
   };
-  // handel peice change---------------------------------------------------------------------------
-  const handlePriceChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
+  // handle escape change------------------------------------------------------------------------------------
+  const handleInputEscape = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number,
+    key: string
   ) => {
-    const newData = [...data];
-    const updatedItem = {
-      ...newData[index],
-      price: Number(e.target.value),
-    };
-    newData[index] = updatedItem;
-    setEditedData((prevData) => [...prevData, updatedItem]);
-    dispatch(setFetchData(newData));
+    if (e.key === "Escape") {
+      const originalValue = newData1[index][key];
+      dispatch(
+        fetchData({
+          page: currentPage,
+          limit: rowsPerPage,
+          setTotalPages: setTotalPages,
+          url: PRODUCT_URL,
+          onSuccess: (data) => {
+            const newData = [...data];
+            const updatedItem = {
+              ...newData[index],
+              [key]: originalValue,
+            };
+            newData[index] = updatedItem;
+            setEditedData((prevData) => [...prevData, updatedItem]);
+            dispatch(setFetchData(newData));
+          },
+        })
+      );
+    }
   };
 
   // return function--------------------------------------------------------------
@@ -110,16 +127,22 @@ function InvestoryTable() {
                       <Input
                         type="text"
                         value={item.price}
-                        onChange={(e) => handlePriceChange(e, index)}
+                        onChange={handleInputChange(e, index, "price")}
                         className="bg-transparent border-none h-[1rem] outline-none"
+                        onKeyDown={(e) => handleInputEscape(e, index, "price")}
                       />
                     </Td>
                     <Td>
                       <Input
                         type="text"
                         value={item.quantity}
-                        onChange={(e) => handleQuantityChange(e, index)}
+                        onChange={(e) =>
+                          handleInputChange(e, index, "quantity")
+                        }
                         className="bg-transparent border-none h-[1rem] outline-none"
+                        onKeyDown={(e) =>
+                          handleInputEscape(e, index, "quantity")
+                        }
                       />
                     </Td>
                   </Tr>

@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 import {
   addProducts,
   deleteDataSucces,
+  singleProductFunction,
   updateDataSuccess,
 } from "../fetchSlice";
 import { fetchDataInterface, ProductInterface } from "../../types/interface";
@@ -19,6 +20,7 @@ export const fetchData =
     url,
     category,
     delivered,
+    sort, // new parameter for sorting
   }: fetchDataInterface) =>
   async (dispatch: Dispatch) => {
     try {
@@ -28,6 +30,10 @@ export const fetchData =
       }
       if (delivered !== undefined) {
         queryUrl += `&delivered=${delivered}`;
+      }
+      if (sort) {
+        // add sorting parameter to the query URL
+        queryUrl += `&_sort=createdAt&_order=desc`;
       }
       const res = await instance.get(queryUrl);
       setTotalPages(Math.ceil(res.headers["x-total-count"] / limit));
@@ -73,6 +79,20 @@ export const updateData =
       console.log(error);
     }
   };
+// function single product------------------------------------------------
+
+export const fetchSingleProduct = (productId: any, url: string) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      const response = await instance.get<ProductInterface>(
+        `${url}/${productId}`
+      );
+      dispatch(singleProductFunction(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 //fetch category----------------------------------------------------------------
 export const fetchData2 =
   ({ url, categoryDospatch }: any) =>

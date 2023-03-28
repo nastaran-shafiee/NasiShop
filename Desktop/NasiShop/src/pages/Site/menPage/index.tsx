@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchData2 } from "../../../redux/fetchAction";
 import { FetchSliceData, ProductInterface } from "../../../types/interface";
 import { MEN_URL, PRODUCT_URL } from "../../../api/endpoint";
-import { addMen, addMen2 } from "../../../redux/fetchSlice";
+import { addMen } from "../../../redux/fetchSlice";
 import { instance } from "../../../api/contants";
 import MenHeader from "../../../Layout/menHeader";
 
@@ -40,7 +40,7 @@ function MenPage() {
       }
     }
     fetchData();
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -75,7 +75,7 @@ function MenPage() {
           />
           <Products
             categoryProduct={menCategory[0].men4}
-            data={data2
+            data={data
               .filter(
                 (product: ProductInterface) =>
                   product.category === menCategory[0].men4

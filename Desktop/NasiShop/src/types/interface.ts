@@ -1,7 +1,7 @@
 import React from "react";
 import { Slice, PayloadAction } from "@reduxjs/toolkit";
 import { ChangeEvent } from "react";
-import DressPage from "../pages/Site/dressPage";
+import DressPage from "../pages/Site/womenCategoryProducts";
 
 export interface inputInterface {
   type?: string;
@@ -145,3 +145,13 @@ export interface FetchSliceInterface
       }
     >
   > {}
+export interface OptionSortInterface {
+  value?: string;
+  className?: string;
+  text?: string;
+}
+export interface Sortinterface {
+  name?: string;
+  className?: string;
+  children?: JSX.Element | JSX.Element[] | string | any;
+}
