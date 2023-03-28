@@ -16,13 +16,17 @@ import { instance } from "../../api/contants";
 import Input from "../../components/input";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { createBrowserHistory } from "@remix-run/router";
 // function investory----------------------------------------------------
 
 function InvestoryTable() {
   const dispatch = useDispatch();
   const data = useSelector((state: FetchSliceData) => state.fetchSlice.data);
   const newData1 = JSON.parse(JSON.stringify(data));
-  const [color,setColor]=
+  const [color, setColor] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const isButtonDisabled = !isDirty;
+  const history = createBrowserHistory();
   // use hook pagination-----------------------------------------------------
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 4);
@@ -37,6 +41,7 @@ function InvestoryTable() {
         url: PRODUCT_URL,
       })
     );
+    history.push(`?page=${currentPage}`);
   }, [dispatch, currentPage, rowsPerPage]);
   // handelquntitychange function--------------------------------------------------------
   const handleInputChange = (
@@ -44,6 +49,8 @@ function InvestoryTable() {
     index: number,
     property: string
   ) => {
+    setColor(true);
+    setIsDirty(true);
     const newData = [...data];
     const updatedItem = {
       ...newData[index],
@@ -67,7 +74,7 @@ function InvestoryTable() {
           limit: rowsPerPage,
           setTotalPages: setTotalPages,
           url: PRODUCT_URL,
-          onSuccess: (data) => {
+          onSuccess: (data: any) => {
             const newData = [...data];
             const updatedItem = {
               ...newData[index],
@@ -90,6 +97,7 @@ function InvestoryTable() {
           مدیریت موجودی و قیمت
         </h1>
         <Button
+          disabled={isButtonDisabled}
           title="ذخیره"
           onClick={() => {
             Promise.all(
@@ -100,11 +108,13 @@ function InvestoryTable() {
               .then(() => {
                 toast.success("تغییرات شما با موفقیت ذخیره شد");
                 setEditedData([]);
+                setIsDirty(false);
               })
               .catch((error) => {
                 console.log(error);
               });
           }}
+          className={!isDirty ? "bg-slate-200" : " "}
         />
       </div>
 
@@ -127,9 +137,24 @@ function InvestoryTable() {
                       <Input
                         type="text"
                         value={item.price}
-                        onChange={handleInputChange(e, index, "price")}
+                        onChange={(e) => {
+                          handleInputChange(e, index, "price");
+                          setColor(true);
+                        }}
                         className="bg-transparent border-none h-[1rem] outline-none"
-                        onKeyDown={(e) => handleInputEscape(e, index, "price")}
+                        onKeyDown={(e) => {
+                          handleInputEscape(e, index, "price");
+                          setColor(false);
+                        }}
+                        style={{
+                          color:
+                            color &&
+                            editedData.findIndex(
+                              (d) => d.id === item.id && d.price !== item.price
+                            ) !== -1
+                              ? "purple"
+                              : "black",
+                        }}
                       />
                     </Td>
                     <Td>
@@ -140,9 +165,20 @@ function InvestoryTable() {
                           handleInputChange(e, index, "quantity")
                         }
                         className="bg-transparent border-none h-[1rem] outline-none"
-                        onKeyDown={(e) =>
-                          handleInputEscape(e, index, "quantity")
-                        }
+                        onKeyDown={(e) => {
+                          handleInputEscape(e, index, "quantity");
+                          setColor(false);
+                        }}
+                        style={{
+                          color:
+                            color &&
+                            editedData.findIndex(
+                              (d) =>
+                                d.id === item.id && d.quantity !== item.quantity
+                            ) !== -1
+                              ? "purple"
+                              : "black",
+                        }}
                       />
                     </Td>
                   </Tr>

@@ -11,6 +11,7 @@ function Input({
   value,
   onKeyDown,
   onBlur,
+  style,
 }: inputInterface) {
   return (
     <div className="flex flex-col gap-2 ">
@@ -25,6 +26,7 @@ function Input({
         value={value}
         onKeyDown={onKeyDown}
         onBlur={onBlur}
+        style={style}
       />
       <p className="text-red-500 text-sm">{error}</p>
     </div>

@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { FetchSliceData, orderInterface } from "../../types/interface";
 import { usePagination } from "../../hooks/pagination";
 import { ORDER_URL } from "../../api/endpoint";
+import { createBrowserHistory } from "@remix-run/router";
+
 // order table function--------------------------------------------------------
 function OrderTable() {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ function OrderTable() {
   const [design, setDesign] = useState<boolean>(false);
   const [all, setAll] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
+  const history = createBrowserHistory();
+
   // useeffect-------------------------------------------------------------
   useEffect(() => {
     dispatch(
@@ -30,6 +34,7 @@ function OrderTable() {
         delivered: deliver,
       })
     );
+    history.push(`?page=${currentPage}`);
   }, [dispatch, currentPage, rowsPerPage, deliver]);
   // function deliverd------------------------------------------------
   function deliverdFunction() {

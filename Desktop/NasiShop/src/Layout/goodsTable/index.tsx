@@ -25,6 +25,7 @@ import {
   getId,
   openDeleteModal,
 } from "../../redux/fetchSlice";
+import { createBrowserHistory } from "@remix-run/router";
 
 // goodtable ------------------------------------------------------------------------
 function GoodsTable() {
@@ -36,7 +37,7 @@ function GoodsTable() {
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>(
     undefined
   );
-
+  const history = createBrowserHistory();
   function openAddModal() {
     const add = true;
     dispatch(changeAddMod(add));
@@ -60,6 +61,7 @@ function GoodsTable() {
         category: selectedCategory,
       })
     );
+    history.push(`?page=${currentPage}`);
   }, [dispatch, currentPage, rowsPerPage, selectedCategory, data]);
   // function delete product----------------------------------------------------------------------------
   function deleteProduct(id: number) {

@@ -9,9 +9,10 @@ import { useEffect } from "react";
 import { fetchData } from "../../../redux/fetchAction";
 import { PRODUCT_URL } from "../../../api/endpoint";
 import Product from "../../../components/product";
+import { createBrowserHistory } from "@remix-run/router";
 
 import { useNavigate, useParams } from "react-router-dom";
-
+// function women-----------------------------------------------------------------
 function WomenCategoryProducts() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,9 +20,10 @@ function WomenCategoryProducts() {
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 4);
   const text = useParams();
+  const history = createBrowserHistory();
 
   const categoryName = text.name?.substring(1);
-  // );
+  //useefect------------------------------------------------------------------------ );
   useEffect(() => {
     dispatch(
       fetchData({
@@ -33,8 +35,9 @@ function WomenCategoryProducts() {
         sort: "-createdAt",
       })
     );
+    history.push(`?page=${currentPage}`);
   }, [dispatch, currentPage, rowsPerPage, data]);
-
+  // return function-----------------------------------------------------------------------------
   return (
     <>
       <WomenHeader />

@@ -7,10 +7,11 @@ import { useEffect } from "react";
 import { fetchData } from "../../../redux/fetchAction";
 import { PRODUCT_URL } from "../../../api/endpoint";
 import Product from "../../../components/product";
+import { createBrowserHistory } from "@remix-run/router";
 
 import { useNavigate, useParams } from "react-router-dom";
 import MenHeader from "../../../Layout/menHeader";
-
+// functionmen-------------------------------------------------------------------------
 function MenCategoryProducts() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,7 +22,9 @@ function MenCategoryProducts() {
   const text = useParams();
 
   const categoryName = text.name?.substring(1);
-  // );
+  const history = createBrowserHistory();
+
+  // useeffect----------------------------------------------------------------);
   useEffect(() => {
     dispatch(
       fetchData({
@@ -33,8 +36,9 @@ function MenCategoryProducts() {
         sort: "-createdAt",
       })
     );
+    history.push(`?page=${currentPage}`);
   }, [dispatch, currentPage, rowsPerPage, data]);
-
+  // return function-----------------------------------------------------------------------------
   return (
     <>
       <MenHeader />
