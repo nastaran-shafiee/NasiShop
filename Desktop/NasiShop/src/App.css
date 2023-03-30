@@ -66,4 +66,5 @@ button:hover {
     none;
   transition: all 0.5s ease-in-out;
   animation: pulse 1s infinite;
+  color: #000080;
 }

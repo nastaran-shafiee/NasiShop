@@ -9,9 +9,6 @@ function Input({
   label,
   onChange,
   value,
-  onKeyDown,
-  onBlur,
-  style,
 }: inputInterface) {
   return (
     <div className="flex flex-col gap-2 ">
@@ -24,9 +21,6 @@ function Input({
         {...validation}
         onChange={onChange}
         value={value}
-        onKeyDown={onKeyDown}
-        onBlur={onBlur}
-        style={style}
       />
       <p className="text-red-500 text-sm">{error}</p>
     </div>

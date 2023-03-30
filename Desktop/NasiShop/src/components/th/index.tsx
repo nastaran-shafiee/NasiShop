@@ -1,6 +1,6 @@
 import { thInterface } from "../../types/interface";
 
-function Th({ text }: thInterface) {
+function Th({ text }: thInterface): JSX.Element {
   return (
     <th>
       {" "}

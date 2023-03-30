@@ -43,7 +43,7 @@ function MenCategoryProducts() {
     <>
       <MenHeader />
       <div>
-        <Slogan header="طراحی زنانه نسی شاپ" />
+        <Slogan header="طراحی مردانه نسی شاپ" />
         <div className="w-full flex justify-center">
           <Sorting />
         </div>

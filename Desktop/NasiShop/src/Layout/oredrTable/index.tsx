@@ -10,6 +10,7 @@ import { FetchSliceData, orderInterface } from "../../types/interface";
 import { usePagination } from "../../hooks/pagination";
 import { ORDER_URL } from "../../api/endpoint";
 import { createBrowserHistory } from "@remix-run/router";
+import { orderModeFunction } from "../../redux/fetchSlice";
 
 // order table function--------------------------------------------------------
 function OrderTable() {
@@ -57,6 +58,11 @@ function OrderTable() {
     setAll(true);
     setSelected("all");
   }
+  // order modal function-----------------------------------------------------
+  function orderModal(id: number) {
+    dispatch(orderModeFunction({ mode: true, id: id }));
+  }
+
   // return function---------------------------------------------------------------
   return (
     <>
@@ -108,7 +114,16 @@ function OrderTable() {
                       })}
                     </Td>
 
-                    <Td>وصعیت سفارش</Td>
+                    <Td>
+                      <p
+                        onClick={() => {
+                          orderModal(item.id);
+                        }}
+                        className="text-sm cursor-pointer"
+                      >
+                        بررسی سفارش
+                      </p>
+                    </Td>
                   </Tr>
                 );
               })}

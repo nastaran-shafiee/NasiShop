@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../button";
 import Input from "../input";
 import useAuth from "../../hooks/Auth";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
+
 function LoginForm() {
   const navigate = useNavigate();
   function submit1() {

@@ -68,24 +68,14 @@ function InvestoryTable() {
   ) => {
     if (e.key === "Escape") {
       const originalValue = newData1[index][key];
-      dispatch(
-        fetchData({
-          page: currentPage,
-          limit: rowsPerPage,
-          setTotalPages: setTotalPages,
-          url: PRODUCT_URL,
-          onSuccess: (data: any) => {
-            const newData = [...data];
-            const updatedItem = {
-              ...newData[index],
-              [key]: originalValue,
-            };
-            newData[index] = updatedItem;
-            setEditedData((prevData) => [...prevData, updatedItem]);
-            dispatch(setFetchData(newData));
-          },
-        })
-      );
+      const newData = [...data];
+      const updatedItem = {
+        ...newData[index],
+        [key]: originalValue,
+      };
+      newData[index] = updatedItem;
+      setEditedData((prevData) => [...prevData, updatedItem]);
+      dispatch(setFetchData(newData));
     }
   };
 
@@ -134,7 +124,7 @@ function InvestoryTable() {
                   <Tr key={item.id}>
                     <Td>{item.name}</Td>
                     <Td>
-                      <Input
+                      <input
                         type="text"
                         value={item.price}
                         onChange={(e) => {
@@ -158,7 +148,7 @@ function InvestoryTable() {
                       />
                     </Td>
                     <Td>
-                      <Input
+                      <input
                         type="text"
                         value={item.quantity}
                         onChange={(e) =>

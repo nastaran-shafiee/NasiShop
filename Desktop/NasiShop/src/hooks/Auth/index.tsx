@@ -14,7 +14,6 @@ const loginUserSrvice = (data: authInterface) =>
 const loginSchema = yup.object({
   username: yup
     .string()
-
     .required("پر کردن این فیلد الزامی است")
     .min(5, "کاربری باید بیش از 4 کاراکتر باشد"),
   password: yup
@@ -42,6 +41,7 @@ const useAuth = () => {
   });
 
   const handleLoginUser = async (data: authInterface) => {
+    console.log(data);
     try {
       const res = await loginUserSrvice(data);
 
@@ -51,6 +51,7 @@ const useAuth = () => {
         navigate("/panel/goods");
       } else {
       }
+      console.log("hi");
     } catch (ex) {
       toast.error("شما دسترسی لازم برای ورود را ندارید");
     }

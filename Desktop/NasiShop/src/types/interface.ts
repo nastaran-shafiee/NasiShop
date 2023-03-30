@@ -66,7 +66,7 @@ export interface ProductInterface {
 
   description: string;
 }
-export interface initialstateInterface {
+export interface InitialStateInterface {
   data: any[];
   data2: any[];
   addModal: boolean;
@@ -74,8 +74,11 @@ export interface initialstateInterface {
   id: number;
   editProduct: any;
   editMode: boolean;
-  menCategory: any[];
-  womanCategory: any[];
+  menCategory: any;
+  womanCategory: any;
+  singleProduct: any;
+  orderMode: boolean;
+  orderID: number;
 }
 export interface FetchSliceData {
   fetchSlice: any;

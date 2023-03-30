@@ -80,12 +80,10 @@ function AddModal() {
         resetArea(),
         resetCategory(),
         resetFile();
-      console.log(formData);
     } else {
       const updatedFormData = new FormData();
       updatedFormData.append("id", editProduct.id); // pass the id of the item to be updated
       updatedFormData.append("image", fileimg);
-
       updatedFormData.append("name", nameValue);
       updatedFormData.append("price", priceValue);
       updatedFormData.append("quantity", quntityValue);
@@ -98,7 +96,7 @@ function AddModal() {
         resetArea(),
         resetCategory(),
         resetFile();
-      console.log(updatedFormData);
+      closeModal();
     }
   }
   // close modal---------------------------------------------------------------
