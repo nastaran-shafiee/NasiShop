@@ -237,3 +237,10 @@ export interface Sortinterface {
   className?: string;
   children?: JSX.Element | JSX.Element[] | string | any;
 }
+export interface CartInterface {
+  img?: string;
+  name?: string;
+  price?: string | number;
+
+  quntity?: string | number;
+}
