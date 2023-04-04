@@ -47,7 +47,7 @@ function MenCategoryProducts() {
         <div className="w-full flex justify-center">
           <Sorting />
         </div>
-        <div className=" flex flex-col items-center my-4">
+        <div className=" flex flex-col items-center my-4 mt-16">
           <div className="w-[90%] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {data &&
               data.map((item: any) => {

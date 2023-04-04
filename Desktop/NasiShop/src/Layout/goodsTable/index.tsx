@@ -76,13 +76,23 @@ function GoodsTable() {
   // return function------------------------------------------------------------------------------------
   return (
     <>
-      <div className="flex w-[95%] justify-between pr-6 mt-8">
+      <div className="flex w-[95%] justify-between pr-6 mt-8 items-center">
         <h1 className="text-purple text-sm md:text-3xl">مدیریت کالا ها</h1>
         <SelectBox
           className="bg-gray text-white border-none"
           onChange={(e) => filterByCategory(e.target.value)}
         />
-        <Button title="افزودن کالا" onClick={openAddModal} />
+        <div className="hidden md:block">
+          <Button title="افزودن کالا" onClick={openAddModal} />
+        </div>
+        <div className="md:hidden">
+          <Icon
+            icon="material-symbols:add"
+            width="35"
+            height="35"
+            onClick={openAddModal}
+          />
+        </div>
       </div>
 
       <div className="w-full max-w-[95%] mx-auto bg-white shadow-lg rounded-sm mt-5 h-[16.5rem]">

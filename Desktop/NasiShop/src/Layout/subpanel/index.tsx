@@ -3,7 +3,7 @@ import Li from "../../components/li";
 function SubPanel() {
   return (
     <div className="w-full h-14 text-center bg-gray2">
-      <div className="flex gap-16 items-center p-4 text-white justify-center text-[2rem]">
+      <div className="flex gap-8 items-center p-4 text-white justify-center text-sm  md:text-[2rem]">
         <Li>
           <NavLink
             to="/panel/goods"

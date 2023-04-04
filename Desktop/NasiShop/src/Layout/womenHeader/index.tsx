@@ -6,7 +6,7 @@ function WomenHeader() {
   return (
     <>
       <div className="w-full bg-gray h-14 text-center ">
-        <div className="flex gap-8 items-center p-4 text-white">
+        <div className="flex gap-4 items-center p-4 text-white md:gap-8">
           <Li>
             <NavLink
               to="/women/:پیراهن زنانه"

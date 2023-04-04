@@ -11,7 +11,7 @@ import MySlider from "../../../components/Slider";
 function WomenPage() {
   const dispatch = useDispatch();
   const data2 = useSelector((state: FetchSliceData) => state.fetchSlice.data);
-  const [womenCategory, setwomanCategory] = useState();
+  const [womenCategory, setwomanCategory] = useState<any>();
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -53,6 +53,7 @@ function WomenPage() {
                 return product.category === womenCategory[0].women1;
               })
               .splice(0, 4)}
+            key={"women1"}
           />
           <Products
             categoryProduct={womenCategory[0].women2}
@@ -62,6 +63,7 @@ function WomenPage() {
                   product.category === womenCategory[0].women2
               )
               .splice(0, 4)}
+            key={"women2"}
           />
           <Products
             categoryProduct={womenCategory[0].women3}
@@ -71,6 +73,7 @@ function WomenPage() {
                   product.category === womenCategory[0].women3
               )
               .splice(0, 4)}
+            key={"women3"}
           />
           <Products
             categoryProduct={womenCategory[0].women4}
@@ -80,6 +83,7 @@ function WomenPage() {
                   product.category === womenCategory[0].women4
               )
               .splice(0, 4)}
+            key={"women4"}
           />
         </>
       )}

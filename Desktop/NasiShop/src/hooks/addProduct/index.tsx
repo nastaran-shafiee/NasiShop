@@ -33,7 +33,9 @@ function useAddProduct() {
 
   //   handle valu change----------------------------------------------------
 
-  const valueChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const valueChangeHandler = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setEntredValue(event.target.value);
   };
   // reset function--------------------------------------------------------------------------

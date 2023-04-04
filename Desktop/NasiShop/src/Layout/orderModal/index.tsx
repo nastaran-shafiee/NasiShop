@@ -122,7 +122,7 @@ function OrderModal() {
             </THead>
             <tbody>
               {product.products &&
-                product.products.map((item, index) => (
+                product.products.map((item: any, index: number) => (
                   <Tr key={index}>
                     <Td>{item.name}</Td>
                     <Td>{item.price}</Td>

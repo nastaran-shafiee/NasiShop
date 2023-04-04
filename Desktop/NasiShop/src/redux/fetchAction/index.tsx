@@ -45,7 +45,7 @@ export const fetchData =
 
 // create method-----------------------------------------------------------------------------
 export const createData =
-  (data: ProductInterface, url: string) => async (dispatch: Dispatch) => {
+  (data: any, url: string) => async (dispatch: Dispatch) => {
     try {
       const response = await instance.post(url, data);
 

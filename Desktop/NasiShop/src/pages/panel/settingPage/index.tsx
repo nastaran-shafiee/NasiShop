@@ -20,14 +20,14 @@ import Cookies from "js-cookie";
 import { instance } from "../../../api/contants";
 // setting function----------------------------------------------------------------------------------------------
 function Setting() {
-  const [women1, setWomen1] = useState(null);
-  const [women2, setWomen2] = useState(null);
-  const [women3, setWomen3] = useState(null);
-  const [women4, setWomen4] = useState(null);
-  const [men1, setMen1] = useState(null);
-  const [men2, setMen2] = useState(null);
-  const [men3, setMen3] = useState(null);
-  const [men4, setMen4] = useState(null);
+  const [women1, setWomen1] = useState<string | null>(null);
+  const [women2, setWomen2] = useState<string | null>(null);
+  const [women3, setWomen3] = useState<string | null>(null);
+  const [women4, setWomen4] = useState<string | null>(null);
+  const [men1, setMen1] = useState<string | null>(null);
+  const [men2, setMen2] = useState<string | null>(null);
+  const [men3, setMen3] = useState<string | null>(null);
+  const [men4, setMen4] = useState<string | null>(null);
 
   const dispatch = useDispatch();
   const womanCategory = useSelector(
@@ -148,12 +148,12 @@ function Setting() {
   }
   return (
     <>
-      <div className="flex flex-col items-center pt-8">
+      <div className="flex flex-col items-center pt-8 gap-8">
         <div>صفحه ی اصلی سایت را بسازید</div>
 
-        <div className="flex flex-col gap-4">
-          <p>مردانه</p>
-          <div className="flex gap-2">
+        <div className="flex flex-col gap-4 w-[100%] ">
+          <p className="pr-8">مردانه</p>
+          <div className="flex flex-col items-center md:flex-row gap-2 justify-center ">
             <SelectBox
               className="bg-purple text-white"
               onChange={(e) => setMen1(e.target.value)}
@@ -173,9 +173,9 @@ function Setting() {
             <Button title="ذخیره" onClick={menChange} />
           </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <p>زنانه</p>
-          <div className="flex gap-2">
+        <div className="flex flex-col gap-4 w-[100%]">
+          <p className="pr-8">زنانه</p>
+          <div className="flex flex-col items-center md:flex-row gap-2 justify-center">
             <SelectBox
               className="bg-purple  text-white"
               onChange={(e) => setWomen1(e.target.value)}

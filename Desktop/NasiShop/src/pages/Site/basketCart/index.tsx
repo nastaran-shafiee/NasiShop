@@ -1,7 +1,7 @@
 function BascketCart() {
   return (
     <>
-      <h1>this is a bascket cart</h1>
+      <h1>سبد خرید</h1>
     </>
   );
 }

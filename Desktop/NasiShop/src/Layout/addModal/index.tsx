@@ -121,7 +121,7 @@ function AddModal() {
     <div className="w-full h-full bg-back absolute t-0 z-50 flex justify-center rounded-md mt-0 pt-8">
       <form
         action=""
-        className="w-[70%] h-[98%] bg-table flex flex-col md:w-[70%] items-center gap-4"
+        className="w-[90%] h-[98%] bg-table flex flex-col md:w-[70%] items-center gap-4"
         onSubmit={handleSubmit(sendToServer)}
       >
         <div className="flex justify-between w-[90%] pt-4">

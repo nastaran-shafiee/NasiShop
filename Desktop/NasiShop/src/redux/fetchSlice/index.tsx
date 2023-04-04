@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
   FetchSliceInterface,
-  initialstateInterface,
+  InitialStateInterface,
+  Product,
 } from "../../types/interface";
 
-const initialState: initialstateInterface = {
+const initialState: InitialStateInterface = {
   data: [],
   data2: [],
   addModal: false,

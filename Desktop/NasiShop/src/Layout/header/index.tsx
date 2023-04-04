@@ -34,12 +34,12 @@ function Header() {
               <Input
                 type="search"
                 placeholder="جست و جو ی محصولات"
-                className="md:w-[90%] rounded-3xl pr-2"
+                className="w-[90%] md:w-[90%] rounded-3xl pr-2"
               />
             </div>
-            <div className="flex w-1/2 justify-between items-center md:w-3/12 pl-6">
+            <div className="flex w-1/2 justify-between items-center md:w-3/12 pl-6 ">
               <Li>
-                <Icon icon="mdi:cards-heart-outline" width="35" height="35" />
+                <Icon icon="mdi:cards-heart-outline" width="30" height="30" />
               </Li>
               <Li>
                 <NavLink to="/panel/login">داشبورد</NavLink>
@@ -47,7 +47,7 @@ function Header() {
               <Li>
                 <NavLink to="/cart">
                   {" "}
-                  <Icon icon="mdi:cart-heart" width="35" height="35" />
+                  <Icon icon="mdi:cart-heart" width="30" height="30" />
                 </NavLink>
               </Li>
               <Li>
