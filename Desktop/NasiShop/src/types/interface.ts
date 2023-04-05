@@ -241,6 +241,8 @@ export interface CartInterface {
   img?: string;
   name?: string;
   price?: string | number;
-
+  id1?: any;
   quntity?: string | number;
+  setMode?: any;
+  setMode2?: any;
 }
