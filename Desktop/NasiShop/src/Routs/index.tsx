@@ -21,6 +21,7 @@ import WomenCategoryProducts from "../pages/Site/womenCategoryProducts";
 import MenPage from "../pages/Site/menPage";
 import MenCategoryProducts from "../pages/Site/menCategoryProducts";
 import DetailProductPage from "../pages/Site/detailProductPages";
+import ModalCart from "../pages/Site/CartModal";
 // const rout--------------------------------------------
 export const routes: RouteObject[] = [
   {
@@ -29,6 +30,8 @@ export const routes: RouteObject[] = [
     children: [
       { path: "/", element: <WelcomePage /> },
       { path: "Cart", element: <BascketCart /> },
+      { path: "user", element: <ModalCart /> },
+
       //women
       { path: "women", element: <WomenPage /> },
       { path: "women/:name", element: <WomenCategoryProducts /> },
