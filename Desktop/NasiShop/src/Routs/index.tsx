@@ -22,6 +22,7 @@ import MenPage from "../pages/Site/menPage";
 import MenCategoryProducts from "../pages/Site/menCategoryProducts";
 import DetailProductPage from "../pages/Site/detailProductPages";
 import ModalCart from "../pages/Site/CartModal";
+import Peyment from "../pages/Site/payment";
 // const rout--------------------------------------------
 export const routes: RouteObject[] = [
   {
@@ -44,6 +45,7 @@ export const routes: RouteObject[] = [
     ],
     errorElement: <NotFoundPage />,
   },
+  { path: "payment", element: <Peyment /> },
   {
     path: "/panel",
     element: <PanelLayout />,
