@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../button";
 
 function Checkout({ mode2 }: any) {
   const [product2, setProduct2] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const products2 = JSON.parse(localStorage.getItem("Cart") || "[]");
     setProduct2(products2);
@@ -25,7 +26,7 @@ function Checkout({ mode2 }: any) {
   }
 
   const handleFinalizePurchase = () => {
-    // TODO: Handle finalizing the purchase
+    navigate("/user");
   };
 
   return (

@@ -23,6 +23,8 @@ import MenCategoryProducts from "../pages/Site/menCategoryProducts";
 import DetailProductPage from "../pages/Site/detailProductPages";
 import ModalCart from "../pages/Site/CartModal";
 import Peyment from "../pages/Site/payment";
+import SuccesPaymen from "../pages/Site/succesPayment";
+import FailPayment from "../pages/panel/failpayment";
 // const rout--------------------------------------------
 export const routes: RouteObject[] = [
   {
@@ -31,7 +33,10 @@ export const routes: RouteObject[] = [
     children: [
       { path: "/", element: <WelcomePage /> },
       { path: "Cart", element: <BascketCart /> },
+      { path: "product/:id", element: <DetailProductPage /> },
       { path: "user", element: <ModalCart /> },
+      { path: "success", element: <SuccesPaymen /> },
+      { path: "fail", element: <FailPayment /> },
 
       //women
       { path: "women", element: <WomenPage /> },

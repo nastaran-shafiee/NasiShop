@@ -35,6 +35,7 @@ function Peyment({}) {
     setprices(totalPrice);
   }, [products2]);
   // payment function--------------------------------------------------------------------------------------------------------
+
   function payment() {
     const order = {
       ...user,
@@ -48,20 +49,26 @@ function Peyment({}) {
       .post(ORDER_URL, order)
       .then((response) => {
         console.log("Order submitted successfully:", response.data);
-        localStorage.clear();
       })
       .catch((error) => {
         console.error("Error submitting order:", error);
         // handle the error, if needed
       });
+    localStorage.clear();
+    const url = `http://localhost:5175/success?consignment=${order.id}`;
+    window.location.href = url;
   }
 
+  function cancel() {
+    const url = `http://localhost:5175/fail`;
+    window.location.href = url;
+  }
   return (
     <div className="flex flex-col items-center justify-center p-10">
       <img src={image} alt="" className="w-[40%]" />
       <div className="flex justify-center gap-3">
         <Button title="پرداخت" className="bg-green-500" onClick={payment} />
-        <Button title="انصراف" className="bg-red-500" />
+        <Button title="انصراف" className="bg-red-500" onClick={cancel} />
       </div>
     </div>
   );
