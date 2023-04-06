@@ -11,7 +11,12 @@ import { FetchSliceData } from "../../types/interface";
 import { cartChange } from "../../redux/fetchSlice";
 
 // header componet---------------------------------------------------------------------------------------
-function Header({ quantity }: any) {
+function Header() {
+  const Cart = useSelector((state: FetchSliceData) => state.fetchSlice.Cart);
+  const number = localStorage.getItem("Number")
+    ? localStorage.getItem("Number")
+    : 0;
+
   return (
     <>
       <header>
@@ -51,9 +56,9 @@ function Header({ quantity }: any) {
               </Li>
               <Li>
                 <div className="flex relative">
-                  {/* <div className="rounded-full bg-red-500 w-5 h-5 flex justify-center items-center text-sm absolute left-4">
-                    {quantity}
-                  </div> */}
+                  <div className="rounded-full bg-red-500 w-5 h-5 flex justify-center items-center text-sm absolute left-4">
+                    {number}
+                  </div>
                   <NavLink to="/cart">
                     {" "}
                     <Icon icon="mdi:cart-heart" width="30" height="30" />

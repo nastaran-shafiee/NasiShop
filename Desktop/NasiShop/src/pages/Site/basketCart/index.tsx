@@ -2,17 +2,22 @@ import Cart from "../../../components/cart";
 import image from "../../../../public/img/shoe1.png";
 import Checkout from "../../../components/checkout";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { cartChange } from "../../../redux/fetchSlice";
 
 function BascketCart() {
   const [products, setProducts] = useState([]);
   const [mode, setMode] = useState(0);
   const [mode2, setMode2] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
   // useeffect-------------------------------------------------------------------------
   useEffect(() => {
     const productCart = localStorage.getItem("Cart");
     const parsedProducts = JSON.parse(productCart!) || [];
     setProducts(parsedProducts);
+    setQuantity(parsedProducts.length);
   }, [mode]);
   // total price function----------------------------------------------------------------------
 

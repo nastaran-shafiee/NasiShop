@@ -2,24 +2,14 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "../Layout/footer";
 import Header from "../Layout/header";
+import { useDispatch, useSelector } from "react-redux";
+import { cartChange } from "../redux/fetchSlice";
+import { FetchSliceData } from "../types/interface";
 function SiteLayout() {
-  const [quantity, setQuantity] = useState(0);
-
-  useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem("Cart")!);
-    if (cartItems) {
-      setQuantity(cartItems.length);
-    } else {
-      setQuantity(0);
-    }
-    console.log("object");
-  }, [localStorage.getItem("Cart")]);
-  useEffect(() => {
-    console.log(quantity);
-  }, [localStorage.getItem("Cart")]);
+ 
   return (
     <>
-      <Header quantity={quantity} />
+      <Header />
       <Outlet></Outlet>
       <Footer />
     </>

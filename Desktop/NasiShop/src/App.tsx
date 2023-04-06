@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import {
@@ -7,10 +7,14 @@ import {
   RouteObject,
 } from "react-router-dom";
 import { routes } from "./Routs";
-const Router = createBrowserRouter(routes);
-
+import { useDispatch, useSelector } from "react-redux";
+import { FetchSliceData } from "./types/interface";
+import { cartChange } from "./redux/fetchSlice";
 // app function
 function App(): JSX.Element {
+  const Router = createBrowserRouter(routes);
+
+  // return function
   return (
     <>
       <RouterProvider router={Router}>

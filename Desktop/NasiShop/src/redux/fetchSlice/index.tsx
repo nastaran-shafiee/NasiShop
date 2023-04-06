@@ -20,7 +20,8 @@ const initialState: InitialStateInterface = {
   singleProduct: {},
   orderMode: false,
   orderID: 0,
-  Cart: [],
+  Cart: 0,
+  mode2: 0,
 };
 
 const FetchSlice: FetchSliceInterface = createSlice({
@@ -94,7 +95,12 @@ const FetchSlice: FetchSliceInterface = createSlice({
       state.orderID = action.payload.id;
     },
     cartChange(state, action) {
-      state.Cart.push(action.payload);
+      state.Cart = state.Cart + action.payload;
+      localStorage.setItem("Number", state.Cart);
+    },
+    cartchange2(state, action) {
+      state.Cart = state.Cart - action.payload;
+      localStorage.setItem("Number", state.Cart);
     },
   },
 });
@@ -116,5 +122,6 @@ export const {
   singleProductFunction,
   orderModeFunction,
   cartChange,
+  cartchange2,
 } = FetchSlice.actions;
 export default FetchSlice.reducer;

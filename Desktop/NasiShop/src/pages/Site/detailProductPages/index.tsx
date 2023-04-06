@@ -80,6 +80,7 @@ function DetailProductPage() {
 
     dispatch(updateData(product.id, newQuantity, PRODUCT_URL));
 
+    dispatch(cartChange(1));
     setTemp(Number(0));
   }
 
