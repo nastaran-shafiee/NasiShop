@@ -67,6 +67,7 @@ function DetailProductPage() {
         quantity: temp,
         totalprice: Number(product.price) * Number(temp),
       });
+      dispatch(cartChange(1));
     }
 
     const updatedData = JSON.stringify(parsedData);
@@ -80,7 +81,6 @@ function DetailProductPage() {
 
     dispatch(updateData(product.id, newQuantity, PRODUCT_URL));
 
-    dispatch(cartChange(1));
     setTemp(Number(0));
   }
 
