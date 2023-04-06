@@ -14,6 +14,8 @@ function DetailProductPage() {
   );
   const dispatch = useDispatch();
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const [isDetailsOpen2, setIsDetailsOpen2] = useState(false);
+
   const [temp, setTemp] = useState<number>(0);
   const param = useParams();
 
@@ -26,6 +28,9 @@ function DetailProductPage() {
   // function toggle deatil----------------------------------------------------------------------------------------------
   const toggleDetails = () => {
     setIsDetailsOpen(!isDetailsOpen);
+  };
+  const toggleDetails2 = () => {
+    setIsDetailsOpen2(!isDetailsOpen2);
   };
 
   // increment------------------------------------------------------------------------------------------------
@@ -113,35 +118,47 @@ function DetailProductPage() {
               />
             </div>
           </div>
-          <div className="flex flex-col place-self-start gap-4 m-4 md:gap-12">
+          <div className="flex flex-col place-self-start gap-4 m-4 md:gap-4">
             <Button
               title={`افزودن به سبد خرید ${temp}`}
               className="bg-purple"
               onClick={addToCart}
               disabled={Number(temp) === 0}
             />
-            <div className="flex gap-4 items-center">
-              <p>تعداد: {temp}</p>
-              <button
-                className="w-12 h-4 bg-red-500 flex justify-center items-center text-white text-3xl rounded-xl"
-                onClick={delete1}
-                disabled={temp === 0}
-              >
-                -
-              </button>
-              <button
-                className="w-12 h-4 bg-red-500 flex justify-center items-center text-white text-3xl rounded-xl"
-                onClick={() => handleChangeQuantity(+1)}
-                disabled={Number(temp) === Number(product.quantity)}
-              >
-                +
-              </button>
-              <p>
-                {Number(product.quantity) === Number(temp)
-                  ? "موجودی تمام شد"
-                  : ""}
-              </p>
+
+            <div
+              onClick={toggleDetails2}
+              className="text-purple flex gap-2 items-start"
+            >
+              <p>انتخاب تعداد</p>
+              <Icon
+                icon="ic:baseline-keyboard-arrow-down"
+                width="25"
+                height="25"
+              />
             </div>
+            {isDetailsOpen2 && (
+              <div className="flex gap-2 items-center">
+                <div className="w-32 h-8 bg-gray rounded-full flex justify-between items-center p-4 text-white text-lg pr-8">
+                  <button onClick={delete1} disabled={temp === 0}>
+                    -
+                  </button>
+                  <p>{temp}</p>
+                  <button
+                    onClick={() => handleChangeQuantity(+1)}
+                    disabled={Number(temp) === Number(product.quantity)}
+                  >
+                    +
+                  </button>
+                </div>
+                <p className="text-red-500">
+                  {Number(product.quantity) === Number(temp)
+                    ? "موجودی تمام شد"
+                    : ""}
+                </p>
+              </div>
+            )}
+
             <div> {product.name}</div>
             <div>{product.price} تومان </div>
             <div
@@ -156,7 +173,7 @@ function DetailProductPage() {
               />
             </div>
             {isDetailsOpen && <div>{product.description}</div>}
-            <div className="w-40 h-12 bg-gray rounded-full flex justify-between items-center p-4 text-white text-lg">
+            <div className="w-32 h-8 bg-purple rounded-md flex justify-between items-center p-4 text-white text-lg">
               <p>موجودی</p>
               <p>{product.quantity}</p>
             </div>

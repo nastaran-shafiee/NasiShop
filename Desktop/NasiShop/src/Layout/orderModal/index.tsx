@@ -72,7 +72,7 @@ function OrderModal() {
     <div className="w-full h-full bg-back absolute t-0 z-50 flex justify-center rounded-md mt-0 pt-8">
       <div className="w-[70%] h-[98%] bg-table flex flex-col md:w-[70%] items-center gap-4">
         <div className="flex justify-between w-[90%] pt-4">
-          <p>بررسی سفارش</p>
+          <p className="text-purple text-2xl font-bold mb-4">بررسی سفارش</p>
           <Icon
             icon="mdi:close-circle"
             width="25"
@@ -81,8 +81,8 @@ function OrderModal() {
             onClick={closeModal}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-[80%]">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 w-[80%]">
+          <div className="flex flex-col gap-4 md:col-span-2">
             <p>
               <span className="text-blue-800">نام: </span> {product.username}
             </p>
@@ -112,41 +112,43 @@ function OrderModal() {
             </div>
           </div>
 
-          <table className="w-full bg-gray2 text-white">
-            <THead>
-              <Tr>
-                <Th text="نام محصول" />
-                <Th text="قیمت" />
-                <Th text="تعداد" />
-              </Tr>
-            </THead>
-            <tbody>
-              {product.Products &&
-                product.Products.map((item: any, index: number) => (
-                  <Tr key={index}>
-                    <Td>{item.name}</Td>
-                    <Td>{item.price}</Td>
-                    <Td>{item.quantity}</Td>
-                    <td></td>
-                  </Tr>
-                ))}
-            </tbody>
-          </table>
-          <div />
-          <div className="flex gap-4">
-            <p>تایید سفارش : </p>
-            <button
-              className="w-12 h-8 bg-green-600 rounded-md"
-              onClick={handleOrderConfirmation}
-            >
-              ارسال
-            </button>
-            <button
-              className="w-12 h-8 bg-red-600 rounded-md"
-              onClick={handleOrderConfirmation2}
-            >
-              کنسل
-            </button>
+          <div className="md:col-span-3 flex flex-col gap-4 items-center">
+            <table className="w-full bg-gray2 text-white p-4">
+              <THead>
+                <Tr>
+                  <Th text="نام محصول" />
+                  <Th text="قیمت" />
+                  <Th text="تعداد" />
+                </Tr>
+              </THead>
+              <tbody>
+                {product.Products &&
+                  product.Products.map((item: any, index: number) => (
+                    <Tr key={index}>
+                      <Td>{item.name}</Td>
+                      <Td>{item.price}</Td>
+                      <Td>{item.quantity}</Td>
+                      <td></td>
+                    </Tr>
+                  ))}
+              </tbody>
+            </table>
+            <div />
+            <div className="flex gap-4">
+              <p>تایید سفارش : </p>
+              <button
+                className="w-12 h-8 bg-green-600 rounded-md"
+                onClick={handleOrderConfirmation}
+              >
+                ارسال
+              </button>
+              <button
+                className="w-12 h-8 bg-red-600 rounded-md"
+                onClick={handleOrderConfirmation2}
+              >
+                کنسل
+              </button>
+            </div>
           </div>
         </div>
       </div>
