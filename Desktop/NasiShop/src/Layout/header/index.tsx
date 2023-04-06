@@ -5,8 +5,13 @@ import { NavLink } from "react-router-dom";
 import Ul from "../../components/ul/ul";
 import Nav from "../../components/nav";
 import Li from "../../components/li";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { FetchSliceData } from "../../types/interface";
+import { cartChange } from "../../redux/fetchSlice";
+
 // header componet---------------------------------------------------------------------------------------
-function Header() {
+function Header({ quantity }: any) {
   return (
     <>
       <header>
@@ -37,7 +42,7 @@ function Header() {
                 className="w-[90%] md:w-[90%] rounded-3xl pr-2"
               />
             </div>
-            <div className="flex w-1/2 justify-between items-center md:w-3/12 pl-6 ">
+            <div className="flex gap-4 w-1/2 justify-between items-center md:w-3/12 pl-6 ">
               <Li>
                 <Icon icon="mdi:cards-heart-outline" width="30" height="30" />
               </Li>
@@ -45,17 +50,22 @@ function Header() {
                 <NavLink to="/panel/login">داشبورد</NavLink>
               </Li>
               <Li>
-                <NavLink to="/cart">
-                  {" "}
-                  <Icon icon="mdi:cart-heart" width="30" height="30" />
-                </NavLink>
+                <div className="flex relative">
+                  {/* <div className="rounded-full bg-red-500 w-5 h-5 flex justify-center items-center text-sm absolute left-4">
+                    {quantity}
+                  </div> */}
+                  <NavLink to="/cart">
+                    {" "}
+                    <Icon icon="mdi:cart-heart" width="30" height="30" />
+                  </NavLink>
+                </div>
               </Li>
-              <Li>
+              <div className="hidden md:block">
                 <NavLink to="/">
                   {" "}
                   <img src={logo} alt="" className="w-10 h-10" />
                 </NavLink>
-              </Li>
+              </div>
             </div>
           </Ul>
         </Nav>

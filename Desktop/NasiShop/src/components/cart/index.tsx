@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateData } from "../../redux/fetchAction";
 import { PRODUCT_URL } from "../../api/endpoint";
 import { instance } from "../../api/contants";
+
 // function cart----------------------------------------------------------------
 function Cart({
   img,
@@ -15,9 +16,9 @@ function Cart({
   setMode,
   setMode2,
 }: CartInterface) {
-  const [quantity1, setQuantity] = useState<any>(quntity);
   const [isdone, setIsdone] = useState(false);
   const dispatch = useDispatch();
+  const [quantity1, setQuantity] = useState<any>(quntity);
 
   //   useeffect-------------------------------------------------------------------
 
@@ -49,7 +50,7 @@ function Cart({
     }
     setMode2((prevValue: number) => prevValue + 1);
   }
-  //   decrease-------------------------------------------------------------------------------------------------
+  // //   decrease-------------------------------------------------------------------------------------------------
 
   async function decreaseProduct() {
     const cartItems = JSON.parse(localStorage.getItem("Cart") || "[]");
@@ -95,6 +96,7 @@ function Cart({
       console.log(error);
     }
     setMode((prevValue: number) => prevValue + 1);
+    setMode2((prevValue: number) => prevValue + 1);
   }
   // return function--------------------------------------------------------------------------
   return (

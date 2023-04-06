@@ -36,6 +36,8 @@ function Products({ categoryProduct, data }: ProductsProps) {
                 price={product.price}
                 img={`http://localhost:3002${product.image}`}
                 key={product.id}
+                id1={product.id}
+                quntity={product.quantity}
                 onClick={() => {
                   navigate(`/product/:${product.id}`);
                 }}

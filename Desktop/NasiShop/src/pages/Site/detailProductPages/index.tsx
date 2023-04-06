@@ -7,11 +7,13 @@ import { fetchSingleProduct, updateData } from "../../../redux/fetchAction";
 import { FetchSliceData } from "../../../types/interface";
 import { Icon } from "@iconify/react";
 import { instance } from "../../../api/contants";
+import { cartChange } from "../../../redux/fetchSlice";
 // function detail product----------------------------------------------------------------------------------
 function DetailProductPage() {
   const product = useSelector(
     (state: FetchSliceData) => state.fetchSlice.singleProduct
   );
+  const Cart = useSelector((state: FetchSliceData) => state.fetchSlice.Cart);
   const dispatch = useDispatch();
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [isDetailsOpen2, setIsDetailsOpen2] = useState(false);
@@ -75,9 +77,12 @@ function DetailProductPage() {
       ...product,
       quantity: Number(product.quantity) - temp,
     };
+
     dispatch(updateData(product.id, newQuantity, PRODUCT_URL));
+
     setTemp(Number(0));
   }
+
   // return function----------------------------------------------------------------------------------------
   return (
     <>
@@ -126,39 +131,6 @@ function DetailProductPage() {
               disabled={Number(temp) === 0}
             />
 
-            <div
-              onClick={toggleDetails2}
-              className="text-purple flex gap-2 items-start"
-            >
-              <p>انتخاب تعداد</p>
-              <Icon
-                icon="ic:baseline-keyboard-arrow-down"
-                width="25"
-                height="25"
-              />
-            </div>
-            {isDetailsOpen2 && (
-              <div className="flex gap-2 items-center">
-                <div className="w-32 h-8 bg-gray rounded-full flex justify-between items-center p-4 text-white text-lg pr-8">
-                  <button onClick={delete1} disabled={temp === 0}>
-                    -
-                  </button>
-                  <p>{temp}</p>
-                  <button
-                    onClick={() => handleChangeQuantity(+1)}
-                    disabled={Number(temp) === Number(product.quantity)}
-                  >
-                    +
-                  </button>
-                </div>
-                <p className="text-red-500">
-                  {Number(product.quantity) === Number(temp)
-                    ? "موجودی تمام شد"
-                    : ""}
-                </p>
-              </div>
-            )}
-
             <div> {product.name}</div>
             <div>{product.price} تومان </div>
             <div
@@ -173,11 +145,45 @@ function DetailProductPage() {
               />
             </div>
             {isDetailsOpen && <div>{product.description}</div>}
-            <div className="w-32 h-8 bg-purple rounded-md flex justify-between items-center p-4 text-white text-lg">
+
+            <div className="w-32 h-8 bg-gray rounded-md flex justify-between items-center p-4 text-white text-lg">
               <p>موجودی</p>
               <p>{product.quantity}</p>
             </div>
-            <div> </div>
+            <div className="flex flex-col gap-4 items-center">
+              <div
+                onClick={toggleDetails2}
+                className="text-purple flex gap-4 items-start"
+              >
+                <p>انتخاب تعداد محصول</p>
+                <Icon
+                  icon="ic:baseline-keyboard-arrow-down"
+                  width="25"
+                  height="25"
+                />
+              </div>
+              {isDetailsOpen2 && (
+                <div className="flex gap-4 items-center">
+                  <div className="w-28 h-8 bg-gray rounded-full flex justify-between items-center p-4 text-white text-lg pr-8">
+                    <button onClick={delete1} disabled={temp === 0}>
+                      -
+                    </button>
+                    <p>{temp}</p>
+                    <button
+                      onClick={() => handleChangeQuantity(+1)}
+                      disabled={Number(temp) === Number(product.quantity)}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <p className="text-red-500 text-sm">
+                    {Number(product.quantity) === Number(temp)
+                      ? "موجودی تمام شد"
+                      : ""}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

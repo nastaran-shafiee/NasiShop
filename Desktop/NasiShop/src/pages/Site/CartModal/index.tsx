@@ -9,7 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 function ModalCart() {
   let [value, setValue] = useState(new Date());
-
+  const minDate = new Date();
+  minDate.setDate(minDate.getDate() + 2);
   const schema = yup.object({
     username: yup.string().required(),
     lastname: yup.string().required(),
@@ -91,6 +92,7 @@ function ModalCart() {
               format="MM/DD/YYYY"
               calendar={persian}
               locale={persian_fa}
+              minDate={minDate}
             />
           </div>
         </div>

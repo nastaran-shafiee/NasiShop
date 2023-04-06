@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Action } from "@remix-run/router";
 import axios from "axios";
 import {
   FetchSliceInterface,
@@ -19,6 +20,7 @@ const initialState: InitialStateInterface = {
   singleProduct: {},
   orderMode: false,
   orderID: 0,
+  Cart: [],
 };
 
 const FetchSlice: FetchSliceInterface = createSlice({
@@ -91,6 +93,9 @@ const FetchSlice: FetchSliceInterface = createSlice({
       state.orderMode = action.payload.mode;
       state.orderID = action.payload.id;
     },
+    cartChange(state, action) {
+      state.Cart.push(action.payload);
+    },
   },
 });
 
@@ -110,5 +115,6 @@ export const {
   editWoman,
   singleProductFunction,
   orderModeFunction,
+  cartChange,
 } = FetchSlice.actions;
 export default FetchSlice.reducer;
