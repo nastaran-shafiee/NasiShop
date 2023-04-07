@@ -248,3 +248,9 @@ export interface CartInterface {
   setMode?: any;
   setMode2?: any;
 }
+export interface productLocal {
+  price?: any;
+  quantity?: any;
+  name: string;
+  image: string;
+}

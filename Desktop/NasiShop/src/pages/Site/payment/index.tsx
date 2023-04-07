@@ -9,6 +9,7 @@ function Peyment({}) {
   const [price, setprices] = useState(0);
 
   const products2 = JSON.parse(localStorage.getItem("Cart") || "[]");
+  // useeffect-----------------------------------------------------------
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const username = searchParams.get("username");
@@ -27,6 +28,7 @@ function Peyment({}) {
 
     setUser(paymentObject);
   }, [location.search]);
+  // useeffect-------------------------------------------------------------------------------
   useEffect(() => {
     let totalPrice = 0;
     products2.forEach((product: any) => {
@@ -52,17 +54,18 @@ function Peyment({}) {
       })
       .catch((error) => {
         console.error("Error submitting order:", error);
-        // handle the error, if needed
+        // handle the error, if neede
       });
     localStorage.clear();
-    const url = `http://localhost:5175/success?consignment=${order.id}`;
+    const url = `http://localhost:5173/success?consignment=${order.id}`;
     window.location.href = url;
   }
-
+  // cancel function--------------------------------------------------------------
   function cancel() {
-    const url = `http://localhost:5175/fail`;
+    const url = `http://localhost:5173/fail`;
     window.location.href = url;
   }
+  // return function-----------------------------------------
   return (
     <div className="flex flex-col items-center justify-center p-10">
       <img src={image} alt="" className="w-[40%]" />

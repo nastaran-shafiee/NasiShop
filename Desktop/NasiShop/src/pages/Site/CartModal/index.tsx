@@ -7,16 +7,19 @@ import DatePicker, { Calendar } from "react-multi-date-picker";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+// modalcart---------------------------------------------------------
 function ModalCart() {
   let [value, setValue] = useState(new Date());
   const minDate = new Date();
   minDate.setDate(minDate.getDate() + 2);
+  // yup-----------------------------------------------------------------
   const schema = yup.object({
-    username: yup.string().required(),
-    lastname: yup.string().required(),
-    address: yup.string().required(),
-    phone: yup.string().required(),
+    username: yup.string().required("پرکردن این فیلد الزامی است"),
+    lastname: yup.string().required("پرکردن این فیلد الزامی است"),
+    address: yup.string().required("پرکردن این فیلد الزامی است"),
+    phone: yup.number().required("پرکردن این فیلد الزامی است"),
   });
+  // useform-------------------------------------------------------------------
   const {
     register,
     handleSubmit,
@@ -25,7 +28,7 @@ function ModalCart() {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
-
+  // submit handeler----------------------------------------------------------------------
   function submitHandler(data: any) {
     const obj = {
       ...data,
@@ -37,12 +40,13 @@ function ModalCart() {
           `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
       )
       .join("&");
-    const url = `http://localhost:5175/payment?${queryString}`;
+    const url = `http://localhost:5173/payment?${queryString}`;
     window.location.href = url;
   }
   function dataonchane(date: any) {
     setValue(date.toDate());
   }
+  // return function-------------------------------------------------------------------------
   return (
     <div className="w-full h-full bg-sort flex justify-center rounded-md mt-0 pt-8">
       <form

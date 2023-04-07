@@ -1,12 +1,15 @@
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
+//function succes payment------------------------------------
 function SuccesPaymen() {
   const [param, setParam] = useState(0);
+  // useefect-----------------------------------------------------
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const consignment = Number(searchParams.get("consignment"));
     setParam(consignment);
   }, [location.search]);
+  // return function-------------------------------------------------
   return (
     <div className="w-full min-h-screen">
       <p className="text-3xl text-purple mt-10 mr-4">نتیجه ی پرداخت</p>

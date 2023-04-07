@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { productLocal } from "../../types/interface";
 import Button from "../button";
 
 function Checkout({ mode2 }: any) {
   const [product2, setProduct2] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
+  // useeffect-------------------------------------------------------------------------------------
   useEffect(() => {
     const products2 = JSON.parse(localStorage.getItem("Cart") || "[]");
     setProduct2(products2);
@@ -15,10 +17,10 @@ function Checkout({ mode2 }: any) {
     setTotalPrice(total(product2));
     console.log(product2);
   }, [product2]);
-
-  function total(products: any) {
+  // function total--------------------------------------------------------------------------------------
+  function total(products: productLocal[]) {
     let totalPrice = 0;
-    products.forEach((product: any) => {
+    products.forEach((product: productLocal) => {
       totalPrice += product.price * product.quantity;
     });
 
@@ -28,7 +30,7 @@ function Checkout({ mode2 }: any) {
   const handleFinalizePurchase = () => {
     navigate("/user");
   };
-
+  // return Function------------------------------------------------------------------------------------
   return (
     <div className="flex flex-col bg-white p-4 gap-4">
       <p>جمع </p>

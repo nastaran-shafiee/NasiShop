@@ -1,4 +1,8 @@
-import { CartInterface, FetchSliceData } from "../../types/interface";
+import {
+  CartInterface,
+  FetchSliceData,
+  productLocal,
+} from "../../types/interface";
 import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,12 +25,12 @@ function Cart({
   const dispatch = useDispatch();
   const [quantity1, setQuantity] = useState<any>(quntity);
 
-  //   useeffect-------------------------------------------------------------------
-
   // increase----------------------------------------------------------------------
   async function increaseProduct() {
     const cartItems = JSON.parse(localStorage.getItem("Cart") || "[]");
-    const itemIndex = cartItems.findIndex((item: any) => item.name === name);
+    const itemIndex = cartItems.findIndex(
+      (item: productLocal) => item.name === name
+    );
 
     try {
       const response = await instance.get(`${PRODUCT_URL}/${id1}`);
@@ -51,11 +55,13 @@ function Cart({
     }
     setMode2((prevValue: number) => prevValue + 1);
   }
-  // //   decrease-------------------------------------------------------------------------------------------------
+  //decreese--------------------------------------------------------------------------------------
 
   async function decreaseProduct() {
     const cartItems = JSON.parse(localStorage.getItem("Cart") || "[]");
-    const itemIndex = cartItems.findIndex((item: any) => item.name === name);
+    const itemIndex = cartItems.findIndex(
+      (item: productLocal) => item.name === name
+    );
 
     try {
       const response = await instance.get(`${PRODUCT_URL}/${id1}`);
