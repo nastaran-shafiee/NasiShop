@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchSliceData } from "../../types/interface";
 import { Icon } from "@iconify/react";
-import { orderModeFunction } from "../../redux/fetchSlice";
+import { ChangeMode2, orderModeFunction } from "../../redux/fetchSlice";
 import { useEffect, useState } from "react";
 import { fetchSingleProduct } from "../../redux/fetchAction";
 import { ORDER_URL } from "../../api/endpoint";
@@ -30,6 +30,8 @@ function OrderModal() {
   const modalRoot = document.getElementById("modal") as HTMLElement;
   // close modal---------------------------------------------------------------
   function closeModal() {
+    dispatch(ChangeMode2(1));
+
     setIsModalOpen(false);
     dispatch(orderModeFunction({ mode: false }));
   }

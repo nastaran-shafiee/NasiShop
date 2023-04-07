@@ -138,6 +138,8 @@ export interface InitialStateInterface {
   singleProduct: any | null;
   orderMode: boolean;
   orderID: number;
+  Cart: number;
+  mode2: number;
 }
 
 interface AddMenPayload {

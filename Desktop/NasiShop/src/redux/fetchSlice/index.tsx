@@ -102,6 +102,9 @@ const FetchSlice: FetchSliceInterface = createSlice({
       state.Cart = state.Cart - action.payload;
       localStorage.setItem("Number", state.Cart);
     },
+    ChangeMode2(state, action) {
+      state.mode2 = state.mode2 - action.payload;
+    },
   },
 });
 
@@ -123,5 +126,6 @@ export const {
   orderModeFunction,
   cartChange,
   cartchange2,
+  ChangeMode2,
 } = FetchSlice.actions;
 export default FetchSlice.reducer;
