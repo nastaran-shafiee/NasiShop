@@ -78,8 +78,7 @@ export interface ProductInterface {
   quantity: number;
   createdAt: number;
   id: number;
-  category: number | string;
-
+  category?: number | string;
   description: string;
 }
 // fetchslice -------------------------------------

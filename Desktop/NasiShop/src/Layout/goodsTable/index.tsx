@@ -120,8 +120,12 @@ function GoodsTable() {
                         crossOrigin="anonymous"
                       />
                     </Td>
-                    <Td>{item.name}</Td>
-                    <Td>{item.category}</Td>
+                    <Td>
+                      <>{item.name}</>
+                    </Td>
+                    <Td>
+                      <>{item.category}</>
+                    </Td>
                     <Td>
                       <div className=" text-right flex gap-8">
                         <Icon
