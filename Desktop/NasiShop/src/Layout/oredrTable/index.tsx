@@ -105,14 +105,21 @@ function OrderTable() {
               data.map((item: orderInterface) => {
                 return (
                   <Tr key={item.id}>
-                    <Td>{item.username}</Td>
-                    <Td>{item.prices}</Td>
                     <Td>
-                      {new Date(item.createdAt).toLocaleDateString("fa-IR", {
-                        hour: undefined,
-                        minute: undefined,
-                        second: undefined,
-                      })}
+                      <>{item.username}</>
+                    </Td>
+                    <Td>
+                      <>{item.prices}</>
+                    </Td>
+                    <Td>
+                      <>
+                        {" "}
+                        {new Date(item.createdAt).toLocaleDateString("fa-IR", {
+                          hour: undefined,
+                          minute: undefined,
+                          second: undefined,
+                        })}
+                      </>
                     </Td>
 
                     <Td>
