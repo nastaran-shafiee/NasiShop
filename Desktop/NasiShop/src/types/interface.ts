@@ -2,7 +2,7 @@ import React from "react";
 import { Slice, PayloadAction } from "@reduxjs/toolkit";
 import { ChangeEvent } from "react";
 import DressPage from "../pages/Site/womenCategoryProducts";
-
+// input interface-----------------------------------------------
 export interface inputInterface {
   type?: string;
   className?: string;
@@ -13,6 +13,7 @@ export interface inputInterface {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   value?: string | number;
 }
+// button interface--------------------------------------------------------
 export interface buttonInterface {
   title?: string;
   className?: string;
@@ -20,9 +21,12 @@ export interface buttonInterface {
   type?: "submit" | "reset" | "button" | undefined;
   disabled?: boolean;
 }
+// childreninterfav=ce---------------------------------------
 export interface childrennterface {
   children: any;
 }
+
+// li interface------------------------------------------
 export interface liInterface {
   children?: JSX.Element | JSX.Element[] | string;
   width?: string;
@@ -30,23 +34,28 @@ export interface liInterface {
   border?: string;
   padding?: string;
 }
+// ul interface---------------------------------------------
 export interface UliInterface {
   children?: any;
   justify?: string;
   padding?: string;
   className?: string;
 }
+// button cart interface--------------------------------------
 export interface ButtonCartInterface {
   children?: any;
 
   position?: string;
 }
+// children interface--------------------------------------------
 export interface childrenInterface {
   children?: JSX.Element | JSX.Element[];
 }
+// th interface----------------------------------------------------
 export interface thInterface {
   text?: string;
 }
+// fetch data interfce----------------------------------------------
 export interface fetchDataInterface {
   page?: number;
   limit: number;
@@ -59,6 +68,7 @@ export interface fetchDataInterface {
   delivered?: boolean | undefined;
   sort?: string | undefined;
 }
+// product Interface------------------------
 export interface ProductInterface {
   name: string;
   brand: string;
@@ -68,15 +78,15 @@ export interface ProductInterface {
   quantity: number;
   createdAt: number;
   id: number;
-  category: number;
+  category: number | string;
 
   description: string;
 }
-
+// fetchslice -------------------------------------
 export interface FetchSliceData {
   fetchSlice: any;
 }
-
+// order interface------------------------------
 export interface orderInterface {
   username: string;
   lastname: string;
@@ -97,7 +107,7 @@ export interface orderInterface {
   createdAt: number;
   id: number;
 }
-
+// auth interface--------------------------------
 export interface authInterface {
   username: string;
   password: string;
@@ -105,14 +115,17 @@ export interface authInterface {
 export interface LoginFormProps {
   handleLoginUser: (data: authInterface) => void;
 }
+// category interface------------------------------------------
 export interface categoryInterface {
   id: number;
   name: string;
 }
+// option interface----------------------------------------------
 export interface optionInterface {
   text?: string;
   value?: string;
 }
+// select interface-------------------------------------------------
 export interface selectInterface {
   text?: string;
   onChange?: (
@@ -241,11 +254,13 @@ export interface OptionSortInterface {
   className?: string;
   text?: string;
 }
+// sorting interface-----------------------------------------
 export interface Sortinterface {
   name?: string;
   className?: string;
   children?: JSX.Element | JSX.Element[] | string | any;
 }
+// cart interface------------------------------------------------
 export interface CartInterface {
   img?: string;
   name?: string;
@@ -255,6 +270,7 @@ export interface CartInterface {
   setMode?: any;
   setMode2?: any;
 }
+// product local interface------------------------------
 export interface productLocal {
   price?: any;
   quantity?: any;
