@@ -122,7 +122,9 @@ function InvestoryTable() {
               data.map((item: ProductInterface, index: number) => {
                 return (
                   <Tr key={item.id}>
-                    <Td>{item.name}</Td>
+                    <Td>
+                      <>{item.name}</>
+                    </Td>
                     <Td>
                       <input
                         type="text"
