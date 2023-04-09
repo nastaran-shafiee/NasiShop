@@ -135,118 +135,7 @@ export interface selectInterface {
   className?: string;
   value?: string;
 }
-// for fetch---------------------------------------------------------------------------------------------------------------------
 
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-}
-
-export interface InitialStateInterface {
-  data: Product[];
-  data2: Product[];
-  addModal: boolean;
-  deleteModal: boolean;
-  id: number;
-  editProduct: any | null;
-  editMode: boolean;
-  menCategory: any;
-  womanCategory: any;
-  singleProduct: any | null;
-  orderMode: boolean;
-  orderID: number;
-  Cart: number;
-  mode2: number;
-}
-
-interface AddMenPayload {
-  menCategory: Product;
-}
-
-interface AddWomenPayload {
-  womanCategory: Product;
-}
-
-interface EditMenPayload {
-  id: number;
-  data: Product;
-}
-
-interface EditWomenPayload {
-  id: number;
-  data: Product;
-}
-
-interface OrderModePayload {
-  mode: boolean;
-  id: number;
-}
-
-export interface FetchSliceInterface {
-  name: string;
-  initialState: InitialStateInterface;
-  reducers: {
-    addProducts(
-      state: InitialStateInterface,
-      action: { payload: Product[] }
-    ): void;
-    changeAddMod(
-      state: InitialStateInterface,
-      action: { payload: boolean }
-    ): void;
-    createDataSuccess(
-      state: InitialStateInterface,
-      action: { payload: Product }
-    ): void;
-    deleteDataSuccess(
-      state: InitialStateInterface,
-      action: { payload: number }
-    ): void;
-    openDeleteModal(
-      state: InitialStateInterface,
-      action: { payload: boolean }
-    ): void;
-    getId(state: InitialStateInterface, action: { payload: number }): void;
-    updateDataSuccess(
-      state: InitialStateInterface,
-      action: { payload: { id: number; data: Product } }
-    ): InitialStateInterface;
-    editMode(
-      state: InitialStateInterface,
-      action: { payload: { mode: boolean; item: Product | null } }
-    ): void;
-    setFetchData(
-      state: InitialStateInterface,
-      action: { payload: Product[] }
-    ): void;
-    addMen(
-      state: InitialStateInterface,
-      action: { payload: AddMenPayload }
-    ): void;
-    addWomen(
-      state: InitialStateInterface,
-      action: { payload: AddWomenPayload }
-    ): void;
-    editMen(
-      state: InitialStateInterface,
-      action: { payload: EditMenPayload }
-    ): InitialStateInterface;
-    editWoman(
-      state: InitialStateInterface,
-      action: { payload: EditWomenPayload }
-    ): InitialStateInterface;
-    singleProductFunction(
-      state: InitialStateInterface,
-      action: { payload: Product | null }
-    ): void;
-    orderModeFunction(
-      state: InitialStateInterface,
-      action: { payload: OrderModePayload }
-    ): void;
-  };
-}
 // ------------------------------------------------------------------
 export interface OptionSortInterface {
   value?: string;
@@ -275,4 +164,99 @@ export interface productLocal {
   quantity?: any;
   name: string;
   image: string;
+}
+// for fetch---------------------------------------------------------------------------------------------------------------------
+
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+}
+
+export interface InitialStateInterface {
+  data: Product[];
+  data2: any[];
+  addModal: boolean;
+  deleteModal: boolean;
+  id: number;
+  editProduct: any;
+  editMode: boolean;
+  menCategory: any;
+  womanCategory: any;
+  singleProduct: any;
+  orderMode: boolean;
+  orderID: number;
+  Cart: number;
+  mode2: number;
+}
+
+export interface FetchSliceInterface {
+  name: string;
+  initialState: InitialStateInterface;
+  reducers: {
+    addProducts(
+      state: InitialStateInterface,
+      action: PayloadAction<Product[]>
+    ): void;
+    changeAddMod(
+      state: InitialStateInterface,
+      action: PayloadAction<boolean>
+    ): void;
+    createDataSuccess(
+      state: InitialStateInterface,
+      action: PayloadAction<Product>
+    ): void;
+    deleteDataSucces(
+      state: InitialStateInterface,
+      action: PayloadAction<number>
+    ): void;
+    openDeleteModal(
+      state: InitialStateInterface,
+      action: PayloadAction<boolean>
+    ): void;
+    getId(state: InitialStateInterface, action: PayloadAction<number>): void;
+    updateDataSuccess(
+      state: InitialStateInterface,
+      action: PayloadAction<{ id: number; data: Product }>
+    ): InitialStateInterface;
+    editMode(
+      state: InitialStateInterface,
+      action: PayloadAction<{ mode: boolean; item: Product }>
+    ): void;
+    setFetchData(
+      state: InitialStateInterface,
+      action: PayloadAction<Product[]>
+    ): void;
+    addMen(state: InitialStateInterface, action: PayloadAction<any>): void;
+    addWomen(state: InitialStateInterface, action: PayloadAction<any>): void;
+    editMen(
+      state: InitialStateInterface,
+      action: PayloadAction<{ id: number; data: any }>
+    ): InitialStateInterface;
+    editWoman(
+      state: InitialStateInterface,
+      action: PayloadAction<{ id: number; data: any }>
+    ): InitialStateInterface;
+    singleProductFunction(
+      state: InitialStateInterface,
+      action: PayloadAction<Product>
+    ): void;
+    orderModeFunction(
+      state: InitialStateInterface,
+      action: PayloadAction<{ mode: boolean; id: number }>
+    ): void;
+    cartChange(
+      state: InitialStateInterface,
+      action: PayloadAction<number>
+    ): void;
+    cartchange2(
+      state: InitialStateInterface,
+      action: PayloadAction<number>
+    ): void;
+    ChangeMode2(
+      state: InitialStateInterface,
+      action: PayloadAction<number>
+    ): void;
+  };
 }

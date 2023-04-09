@@ -1,4 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  PayloadAction,
+  Slice,
+  SliceCaseReducers,
+} from "@reduxjs/toolkit";
 import { Action } from "@remix-run/router";
 import axios from "axios";
 import {
@@ -7,6 +12,13 @@ import {
   Product,
 } from "../../types/interface";
 
+interface FetchSliceInterface2
+  extends Slice<
+    InitialStateInterface,
+    SliceCaseReducers<InitialStateInterface>,
+    "fetchProducts"
+  > {}
+// inintial interface-----------------------------------------------
 const initialState: InitialStateInterface = {
   data: [],
   data2: [],
@@ -23,8 +35,8 @@ const initialState: InitialStateInterface = {
   Cart: 0,
   mode2: 0,
 };
-
-const FetchSlice: FetchSliceInterface = createSlice({
+// redusers-------------------------------------------------
+const FetchSlice: FetchSliceInterface2 = createSlice({
   name: "fetchProducts",
   initialState: initialState,
   reducers: {
@@ -51,7 +63,7 @@ const FetchSlice: FetchSliceInterface = createSlice({
       const index = state.data.findIndex(
         (item) => item.id === action.payload.id
       );
-      const updatedData = [...state.data]; // create a new copy of the array
+      const updatedData: any = [...state.data]; // create a new copy of the array
       updatedData[index] = action.payload.data; // update the item at the specified index
       return { ...state, data: updatedData };
     },
@@ -96,11 +108,11 @@ const FetchSlice: FetchSliceInterface = createSlice({
     },
     cartChange(state, action) {
       state.Cart = state.Cart + action.payload;
-      localStorage.setItem("Number", state.Cart);
+      localStorage.setItem("Number", state.Cart.toString());
     },
     cartchange2(state, action) {
       state.Cart = state.Cart - action.payload;
-      localStorage.setItem("Number", state.Cart);
+      localStorage.setItem("Number", state.Cart.toString());
     },
     ChangeMode2(state, action) {
       state.mode2 = state.mode2 - action.payload;
