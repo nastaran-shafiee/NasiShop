@@ -102,6 +102,9 @@ export interface authInterface {
   username: string;
   password: string;
 }
+export interface LoginFormProps {
+  handleLoginUser: (data: authInterface) => void;
+}
 export interface categoryInterface {
   id: number;
   name: string;
@@ -112,7 +115,7 @@ export interface optionInterface {
 }
 export interface selectInterface {
   text?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
   value?: string;
 }

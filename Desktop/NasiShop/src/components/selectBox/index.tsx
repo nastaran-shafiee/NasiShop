@@ -1,6 +1,13 @@
 import { selectInterface } from "../../types/interface";
 import Option from "../option";
-function SelectBox({ text, onChange, value, className }: selectInterface) {
+// select box function----------------------------------------------------------------
+
+function SelectBox({
+  text,
+  onChange,
+  value,
+  className,
+}: selectInterface): JSX.Element {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="">{text}</label>

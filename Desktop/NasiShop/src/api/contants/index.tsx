@@ -8,41 +8,42 @@ export const instance = axios.create({
   timeout: 80000,
 });
 
-// instance.interceptors.request.use(
-//   (config) => {
-//     const authToken = Cookies.get("token");
-//     if (authToken !== undefined) {
-//       config.headers.token = authToken;
-//       config.timeout = 800000;
-//     }
-//     return config;
-//   },
-//   (err) => {
-//     return Promise.reject(err);
-//   }
-// );
+instance.interceptors.request.use(
+  (config) => {
+    const authToken = Cookies.get("token");
+    if (authToken) {
+      config.headers.Authorization = `Bearer ${authToken}`;
+      config.headers.refreshToken = localStorage.getItem("refresh_token");
+      config.timeout = 800000;
+    }
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
 
-// instance.interceptors.response.use(
-//   (response) => {
-//     return response;
-//   },
-//   (error) => {
-//     const {
-//       response: { status },
-//     } = error;
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const {
+      response: { status },
+    } = error;
 
-//     if (status === 401) {
-//       instance.defaults.headers.refreshToken =
-//         localStorage.getItem("refresh_token");
-//       instance.post("/auth/refresh-token").then(({ data }) => {
-//         console.log(data);
-//         const { accessToken } = data;
+    if (status === 401) {
+      try {
+        const { data } = await instance.post("/auth/refresh-token");
+        console.log(data);
+        const { accessToken } = data;
 
-//         Cookies.set("token", accessToken);
-//         window.location.reload();
-//       });
-//     } else {
-//       return Promise.reject(error);
-//     }
-//   }
-// );
+        Cookies.set("token", accessToken);
+        window.location.reload();
+      } catch (error) {
+        // handle error
+      }
+    }
+    return Promise.reject(error);
+  }
+);
