@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+// usepagination---------------------------------------------------------------------
 export const usePagination = (
   initialPage: number,
   initialRowsPerPage: number
@@ -7,9 +7,11 @@ export const usePagination = (
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [rowsPerPage, setRowsPerPage] = useState(initialRowsPerPage);
   const [totalPages, setTotalPages] = useState(1);
+  // function handle page click----------------------------------------------------------
   const handlePageClick = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+  // function render pagination button-----------------------------------------------------------
   const renderPaginationButtons = () => {
     const pageButtons = [];
 
