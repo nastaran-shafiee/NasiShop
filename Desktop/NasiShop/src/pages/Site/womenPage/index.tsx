@@ -11,7 +11,7 @@ function WomenPage() {
   const dispatch = useDispatch();
   const data2 = useSelector((state: FetchSliceData) => state.fetchSlice.data);
   const [womenCategory, setwomanCategory] = useState<any>();
-  const [data, setData] = useState();
+  const [data, setData] = useState<ProductInterface[]>();
 
   useEffect(() => {
     async function fetchData() {
