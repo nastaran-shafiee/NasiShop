@@ -115,7 +115,11 @@ export interface optionInterface {
 }
 export interface selectInterface {
   text?: string;
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void;
   className?: string;
   value?: string;
 }
