@@ -8,13 +8,20 @@ import { MEN_URL, PRODUCT_URL } from "../../../api/endpoint";
 import { addMen } from "../../../redux/fetchSlice";
 import { instance } from "../../../api/contants";
 import MenHeader from "../../../Layout/menHeader";
-
+// men category--------------------------------------------------------------
+interface MenCategory {
+  men1: number;
+  men2: number;
+  men3: number;
+  men4: number;
+}
+// men page--------------------------------------------------------------------
 function MenPage() {
   const dispatch = useDispatch();
   const data2 = useSelector((state: FetchSliceData) => state.fetchSlice.data);
-  const [menCategory, setMenCategory] = useState();
-  const [data, setData] = useState();
-
+  const [menCategory, setMenCategory] = useState<MenCategory[]>();
+  const [data, setData] = useState<ProductInterface[]>();
+  // useeffect-----------------------------------------------------------
   useEffect(() => {
     async function fetchData() {
       try {
@@ -41,7 +48,7 @@ function MenPage() {
     }
     fetchData();
   }, [data]);
-
+  // return function------------------------------------------------
   return (
     <>
       <MenHeader />

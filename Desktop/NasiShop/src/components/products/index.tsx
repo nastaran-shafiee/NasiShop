@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 interface ProductsProps {
-  categoryProduct: string;
+  categoryProduct: string | number;
   data: ProductInterface[];
 }
 
