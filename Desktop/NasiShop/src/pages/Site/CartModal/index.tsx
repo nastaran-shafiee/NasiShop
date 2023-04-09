@@ -37,7 +37,7 @@ function ModalCart() {
     const queryString = Object.entries(obj)
       .map(
         ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+          `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`
       )
       .join("&");
     const url = `http://localhost:5173/payment?${queryString}`;
