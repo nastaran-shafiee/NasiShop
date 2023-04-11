@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateData } from "../../redux/fetchAction";
 import { PRODUCT_URL } from "../../api/endpoint";
 import { instance } from "../../api/contants";
-import { cartchange2 } from "../../redux/fetchSlice";
+import { cartChange, cartchange2 } from "../../redux/fetchSlice";
 
 // function cart----------------------------------------------------------------
 function Cart({
@@ -104,7 +104,7 @@ function Cart({
     }
     setMode((prevValue: number) => prevValue + 1);
     setMode2((prevValue: number) => prevValue + 1);
-    dispatch(cartchange2(1));
+    dispatch(cartChange(-1));
   }
   // return function--------------------------------------------------------------------------
   return (
