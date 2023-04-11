@@ -108,14 +108,19 @@ const FetchSlice: FetchSliceInterface2 = createSlice({
     },
     cartChange(state, action) {
       state.Cart = state.Cart + action.payload;
-      localStorage.setItem("Number", state.Cart.toString());
+      let number = localStorage.getItem("Number")!;
+
+      if (number) {
+        number = Number(number) + action.payload;
+      } else {
+        number = action.payload;
+      }
+
+      localStorage.setItem("Number", number.toString());
     },
     cartchange2(state, action) {
       state.Cart = state.Cart - action.payload;
       localStorage.setItem("Number", state.Cart.toString());
-    },
-    ChangeMode2(state, action) {
-      state.mode2 = state.mode2 - action.payload;
     },
   },
 });
