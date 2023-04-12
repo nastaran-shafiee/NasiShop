@@ -17,7 +17,7 @@ function WomenHeader() {
           </Li>
           <Li>
             <NavLink
-              to="/women/اکسسوری زنانه"
+              to="/women/:اکسسوری زنانه"
               className={({ isActive }) => (isActive ? "activeLink1" : " ")}
             >
               زیورآلات
