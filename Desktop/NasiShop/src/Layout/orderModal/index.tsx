@@ -31,10 +31,8 @@ function OrderModal() {
   // close modal---------------------------------------------------------------
 
   function closeModal() {
-    let count = 0;
-    dispatch(ChangeMode2(count++));
+    dispatch(ChangeMode2(-1));
 
-    setIsModalOpen(false);
     dispatch(orderModeFunction({ mode: false }));
   }
   // function handel-------------------------------------------------------------
@@ -47,7 +45,7 @@ function OrderModal() {
         console.error("Error confirming order", error);
       });
 
-    closeModal();
+    // closeModal();
   }
   function handleOrderConfirmation2() {
     const updatedProduct = { ...product, delivered: false };
@@ -58,12 +56,12 @@ function OrderModal() {
         console.error("Error confirming order", error);
       });
 
-    closeModal();
+    // closeModal();
   }
   // use effect----------------------------------------------------------------
   useEffect(() => {
     dispatch(fetchSingleProduct(id1, ORDER_URL));
-  }, [dispatch, product, id1, product.delivered, orderMode]);
+  }, [dispatch, product, id1, product.delivered]);
 
   function orderSetting() {
     if (product.delivered === false) {
