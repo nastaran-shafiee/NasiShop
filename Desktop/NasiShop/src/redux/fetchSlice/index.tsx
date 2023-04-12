@@ -86,7 +86,7 @@ const FetchSlice: FetchSliceInterface2 = createSlice({
       const index = state.menCategory.findIndex(
         (item: any) => item.id === action.payload.id
       );
-      const updatedData = [...state.menCategory]; // create a new copy of the array
+      const updatedData: any = [...state.menCategory]; // create a new copy of the array
       updatedData[index] = action.payload.data; // update the item at the specified index
       return { ...state, data: updatedData };
     },
@@ -123,8 +123,7 @@ const FetchSlice: FetchSliceInterface2 = createSlice({
       localStorage.setItem("Number", state.Cart.toString());
     },
     ChangeMode2(state, action) {
-      const updatedMode2 = state.mode2 + action.payload;
-      return { ...state, mode2: updatedMode2 };
+      state.mode2 = state.mode2 + action.payload;
     },
   },
 });
