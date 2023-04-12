@@ -16,7 +16,7 @@ import { orderModeFunction } from "../../redux/fetchSlice";
 function OrderTable() {
   const dispatch = useDispatch();
   const data = useSelector((state: FetchSliceData) => state.fetchSlice.data);
-  const mode2 = useSelector((state: FetchSliceData) => state.fetchSlice.mode2);
+  let mode3 = useSelector((state: FetchSliceData) => state.fetchSlice.mode2);
   const { currentPage, rowsPerPage, setTotalPages, renderPaginationButtons } =
     usePagination(1, 5);
   const [deliver, setDeliver] = useState<boolean | undefined>(undefined);
@@ -28,9 +28,6 @@ function OrderTable() {
   // useeffect-------------------------------------------------------------
 
   useEffect(() => {
-    console.log("mode2", mode2);
-  }, [mode2]);
-  useEffect(() => {
     dispatch(
       fetchData({
         page: currentPage,
@@ -40,7 +37,7 @@ function OrderTable() {
         delivered: deliver,
       })
     );
-  }, [dispatch, currentPage, rowsPerPage, deliver, mode2]);
+  }, [dispatch, currentPage, rowsPerPage, deliver, mode3]);
 
   // function deliverd------------------------------------------------
   function deliverdFunction() {
