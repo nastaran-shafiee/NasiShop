@@ -113,7 +113,7 @@ function OrderModal() {
               </p>
               <div className="flex gap-2">
                 <p className="text-blue-800">وضعیت سفارش</p>:
-                <p>{orderSetting()}</p>
+                <div>{orderSetting()}</div>
               </div>
             </div>
 
