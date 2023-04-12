@@ -26,6 +26,10 @@ function OrderTable() {
   const history = createBrowserHistory();
 
   // useeffect-------------------------------------------------------------
+
+  useEffect(() => {
+    console.log("mode2", mode2);
+  }, [mode2]);
   useEffect(() => {
     dispatch(
       fetchData({
@@ -36,8 +40,8 @@ function OrderTable() {
         delivered: deliver,
       })
     );
-    history.push(`?page=${currentPage}`);
   }, [dispatch, currentPage, rowsPerPage, deliver, mode2]);
+
   // function deliverd------------------------------------------------
   function deliverdFunction() {
     setDeliver(true);
@@ -60,8 +64,8 @@ function OrderTable() {
     setSelected("all");
   }
   // order modal function-----------------------------------------------------
-  function orderModal(id: number) {
-    dispatch(orderModeFunction({ mode: true, id: id }));
+  function orderModal(id1: number) {
+    dispatch(orderModeFunction({ mode: true, id: id1 }));
   }
 
   // return function---------------------------------------------------------------
@@ -123,14 +127,14 @@ function OrderTable() {
                     </Td>
 
                     <Td>
-                      <p
+                      <div
                         onClick={() => {
                           orderModal(item.id);
                         }}
                         className="text-sm cursor-pointer"
                       >
                         بررسی سفارش
-                      </p>
+                      </div>
                     </Td>
                   </Tr>
                 );
