@@ -33,7 +33,7 @@ const initialState: InitialStateInterface = {
   orderMode: false,
   orderID: 0,
   Cart: 0,
-  mode2: 0,
+  mode2: 1,
 };
 // redusers-------------------------------------------------
 const FetchSlice: FetchSliceInterface2 = createSlice({
@@ -121,6 +121,9 @@ const FetchSlice: FetchSliceInterface2 = createSlice({
     cartchange2(state, action) {
       state.Cart = state.Cart - action.payload;
       localStorage.setItem("Number", state.Cart.toString());
+    },
+    ChangeMode2(state, action) {
+      state.mode2 = state.mode2 + action.payload;
     },
   },
 });
