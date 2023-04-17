@@ -70,7 +70,7 @@ function ModalCart() {
             label="نام خانوادگی"
             className="border-none w-72"
             validation={{ ...register("lastname") }}
-            error={errors.lastName?.message}
+            error={errors.lastname?.message}
           />
           <Input
             type="text"

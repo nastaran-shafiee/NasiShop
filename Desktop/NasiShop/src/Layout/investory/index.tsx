@@ -60,24 +60,6 @@ function InvestoryTable() {
     setEditedData((prevData) => [...prevData, updatedItem]);
     dispatch(setFetchData(newData));
   };
-  // handle escape change------------------------------------------------------------------------------------
-  const handleInputEscape = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    index: number,
-    key: string
-  ) => {
-    if (e.key === "Escape") {
-      const originalValue = newData1[index][key];
-      const newData = [...data];
-      const updatedItem = {
-        ...newData[index],
-        [key]: originalValue,
-      };
-      newData[index] = updatedItem;
-      setEditedData((prevData) => [...prevData, updatedItem]);
-      dispatch(setFetchData(newData));
-    }
-  };
 
   // return function--------------------------------------------------------------
   return (
@@ -134,10 +116,6 @@ function InvestoryTable() {
                           setColor(true);
                         }}
                         className="bg-transparent border-none h-[1rem] outline-none"
-                        onKeyDown={(e) => {
-                          handleInputEscape(e, index, "price");
-                          setColor(false);
-                        }}
                         style={{
                           color:
                             color &&
@@ -157,10 +135,6 @@ function InvestoryTable() {
                           handleInputChange(e, index, "quantity")
                         }
                         className="bg-transparent border-none h-[1rem] outline-none"
-                        onKeyDown={(e) => {
-                          handleInputEscape(e, index, "quantity");
-                          setColor(false);
-                        }}
                         style={{
                           color:
                             color &&

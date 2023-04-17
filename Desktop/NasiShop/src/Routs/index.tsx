@@ -52,6 +52,7 @@ export const routes: RouteObject[] = [
   },
   { path: "payment", element: <Peyment /> },
   {
+    // panel-------------------------------------------------------
     path: "/panel",
     element: <PanelLayout />,
     children: [
