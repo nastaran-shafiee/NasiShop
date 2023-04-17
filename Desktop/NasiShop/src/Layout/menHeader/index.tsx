@@ -6,24 +6,54 @@ function MenHeader() {
   return (
     <>
       <div className="w-full bg-gray h-14 text-center ">
-        <div className="flex gap-8 items-center p-4 text-white">
+        <div className="flex gap-4 items-center p-4 text-white md:gap-8">
           <Li>
-            <NavLink to="/men/coat">کت</NavLink>
+            <NavLink
+              to="/men/:کت مردانه"
+              className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+            >
+              کت
+            </NavLink>
           </Li>
           <Li>
-            <NavLink to="/men/Accessory">زیورآلات</NavLink>
+            <NavLink
+              to="/men/:اکسسوری مردانه"
+              className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+            >
+              زیورآلات
+            </NavLink>
           </Li>
           <Li>
-            <NavLink to="/men/pants">شلوار</NavLink>
+            <NavLink
+              to="/men/:شلوار مردانه"
+              className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+            >
+              شلوار
+            </NavLink>
           </Li>
           <Li>
-            <NavLink to="/men/shirts">بلوز</NavLink>
+            <NavLink
+              to="/men/:بلوز مردانه"
+              className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+            >
+              بلوز
+            </NavLink>
           </Li>
           <Li>
-            <NavLink to="/men/shoes">کفش</NavLink>
+            <NavLink
+              to="/men/:کفش مردانه"
+              className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+            >
+              کفش
+            </NavLink>
           </Li>
           <Li>
-            <NavLink to="/men/socks">جوراب</NavLink>
+            <NavLink
+              to="/men/:جوراب مردانه"
+              className={({ isActive }) => (isActive ? "activeLink1" : " ")}
+            >
+              جوراب
+            </NavLink>
           </Li>
         </div>
       </div>

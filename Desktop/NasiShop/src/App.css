@@ -1,9 +1,10 @@
 * {
   direction: rtl;
-  font-family: "Digi Lotos";
+  font-family: "IRANSans";
   font-size: 1.125rem;
   box-sizing: border-box;
 }
+
 .activeLink {
   display: flex;
   width: 100%;
@@ -20,4 +21,50 @@ a {
 }
 .black {
   color: black !important;
+}
+.activeLink1 {
+  color: rgb(180, 9, 216) !important;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background-color: rgb(209, 208, 208);
+}
+textarea {
+  resize: none !important;
+}
+.buttonwidth {
+  width: 6rem !important;
+}
+.sorting {
+  color: rgb(175, 173, 173);
+}
+.landing {
+  color: rgb(180, 9, 216) !important;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+button {
+  animation: none;
+}
+button:hover {
+  color: white;
+
+  outline: none;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.274),
+      rgba(255, 255, 255, 0.274)
+    ),
+    none;
+  transition: all 0.5s ease-in-out;
+  animation: pulse 1s infinite;
+  color: #000080;
 }
